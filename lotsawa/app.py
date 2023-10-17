@@ -75,12 +75,12 @@ def progress_bar(i, total):
 # defining function to keep logs
 def log(update):
     print(update)
-    logs.append((update, datetime.datetime.now().strftime("%B %d, %Y")))
+    logs.append((update, datetime.datetime.now().strftime("%H:%M:%S %m/%d/%Y")))
 
 # define function to write logs
 def write_logs(logs):
     with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/logs.txt', 'w') as output:
-        output.writelines(logs)
+        output.writelines('\n'.join(str(log).replace('(', '').replace(')', ''). replace('\'', '').replace(',', ' at ') for log in logs))
         print('See logs.txt for process information')
 
 def error(problem):
