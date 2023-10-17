@@ -1,170 +1,102 @@
-import os
-# silence TensorFlow logs
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-import tensorflow as tf
-import keras_nlp
-import pickle
-import datetime
-import sys
+import PySimpleGUI as sg
+import os.path
+import lotsawa_funcs
 
-# define constants
-MAX_SEQUENCE_LENGTH = 15
-VOCAB_SIZE = 15000
-EMBED_DIM = 256
-INTERMEDIATE_DIM = 2048
-NUM_HEADS = 8
-AUTOTUNE = tf.data.AUTOTUNE
-
-# define translation function
-def translate(input_sentences):
-
-    input_sentences = tf.constant([input_sentences])
-
-    batch_size = tf.shape(input_sentences)[0]
-
-    encoder_input_tokens = tib_tokenizer(input_sentences).to_tensor(
-        shape=(None, MAX_SEQUENCE_LENGTH)
-    )
-
-    def next(prompt, cache, index):
-        logits = tib_eng_translator([encoder_input_tokens, prompt])[:, index - 1, :]
-        hidden_states = None
-        return logits, hidden_states, cache
-    
-    length = MAX_SEQUENCE_LENGTH
-    start = tf.fill((batch_size, 1), eng_tokenizer.token_to_id("[START]"))
-    pad = tf.fill((batch_size, length - 1), eng_tokenizer.token_to_id("[PAD]"))
-    prompt = tf.concat((start, pad), axis=-1)
-
-    generated_tokens = keras_nlp.samplers.GreedySampler()(
-        next,
-        prompt,
-        end_token_id=eng_tokenizer.token_to_id("[END]"),
-        index=1
-    )
-    generated_sentences = eng_tokenizer.detokenize(generated_tokens)
-    try:
-        generated_sentences = generated_sentences.numpy()[0].decode("utf-8")
-
-        generated_sentences = (
-            generated_sentences.replace("[PAD]", "")
-            .replace("[START]", "")
-            .replace("[END]", "")
-            .replace("[UNK]", "")
-            .strip()
+# define file list column
+file_list_column = [
+    [
+        sg.Text("Folder"),
+        sg.In(
+            size=(20,1), 
+            enable_events=True, 
+            key="-FOLDER-"
+            ),
+        sg.FolderBrowse(),
+    ],
+    [
+        sg.Listbox(
+            values=[],
+            enable_events=True,
+            size=(40,40),
+            key='-FILE LIST-'
         )
-    except:
-        pass
-    return generated_sentences
+    ],
+]
 
-# define function for progress bar
-def progress_bar(i, total):
-    print('Translating document...')
-    # clear previous progress
-    os.system('clear')
-    for line in logs:    
-        print(line[0])
-    # progress bar
-    length = 50
-    progress = int(round((i / total) * length, 0))
-    filled = '█' * progress
-    not_filled = '-' * (length - progress)
-    bar = '[' + filled + not_filled + ']'
-    return bar
+# define file viewer column
+file_viewer_column = [
+    [sg.Text("Contens of chosen file:")],
+    [sg.Text(size=(70, 1), key="-TOUT-")],
+    [sg.Text(size=(70,40),key="-TEXT-")],
+    [sg.Button("Translate")]
+]
 
-# defining function to keep logs
-def log(update):
-    print(update)
-    logs.append((update, datetime.datetime.now().strftime("%H:%M:%S %m/%d/%Y")))
+# define translation viewer column
+translation_viewer_column = [
+    [sg.Text("Translation of chosen file:")],
+    [sg.Text(size=(70, 1), key="-TRANSLATION OUT-")],
+    [sg.Text(size=(70,40),key="-TRANSLATION TEXT-")]
+]
 
-# define function to write logs
-def write_logs(logs):
-    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/logs.txt', 'w') as output:
-        output.writelines('\n'.join(str(log).replace('(', '').replace(')', ''). replace('\'', '').replace(',', ' at ') for log in logs))
-        print('See logs.txt for process information')
+# define window layout
+layout = [
+    [
+        sg.Column(file_list_column),
+        sg.VSeparator(),
+        sg.Column(file_viewer_column, scrollable=False, vertical_scroll_only=True),
+        sg.VSeparator(),
+        sg.Column(translation_viewer_column, scrollable=False, vertical_scroll_only=True)
+    ]
+]
 
-def error(problem):
-    log(problem)
-    write_logs(logs)
-    sys.exit()
 
-logs = []
+# create the window
+window = sg.Window(title='Lotsawa', layout=layout)
 
-os.system('clear')
-log('Running...')
+# create event loop
+while True:
+    event, values = window.read()
 
-try:
-    # load in pickled tokenizers
-    log('Loading tokenizers...')
+    # end program if user closes window
+    if event == "Exit" or event == sg.WIN_CLOSED:
+        break
 
-    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/eng-tokenizer.pickle', 'rb') as handle:
-        eng_tokenizer = pickle.load(handle)
+    # with a folder selected, make a list of file in folder
+    if event == "-FOLDER-":
+        folder = values["-FOLDER-"]
+        try:
+            # get list of files in folder
+            file_list = os.listdir(folder)
+        except:
+            file_list = []
 
-    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/tib-tokenizer.pickle', 'rb') as handle:
-        tib_tokenizer = pickle.load(handle)
+        fnames = [
+            f 
+            for f in file_list
+            if os.path.isfile(os.path.join(folder, f)) and f.lower().endswith('.txt')
+        ]
 
-    log('Tokenizers loaded!')
-except:
-    error('Tokenizers failed to load')
+        window["-FILE LIST-"].update(fnames)
 
-try:
-    # load in model
-    log('Loading model...')
-    tib_eng_translator = tf.keras.models.load_model("/home/j/Documents/Projects/Iron-Bridge/lotsawa/models/tib-eng-translator-0.2.0.keras")
-    log('Model loaded!')
+    elif event == "-FILE LIST-":
+        try:
+            filename = os.path.join(
+                values["-FOLDER-"], values["-FILE LIST-"][0]
+            )
+            window["-TOUT-"].update(values["-FILE LIST-"][0])
 
-except:
-    error('Model failed to load')
+            with open(filename, 'r') as f:
+                contents = f.read()
 
-# initialize counter of translated lines and flag for successful opening of input
-i = 1
-input_opened = False
+            window["-TEXT-"].update(contents)
+        except:
+            pass
 
-try:
-    translation = []
+    elif event == 'Translate':
+        try:
+            translation = lotsawa_funcs.translate(filename) # TODO
+            window["-TRANSLATION TEXT-"].update(translation)
+        except:
+            pass
 
-    in_text = '/home/j/Documents/Projects/Iron-Bridge/lotsawa/data/test-page/test-tibetan.txt'
-
-    # translated inputted file
-    with open(in_text, 'r') as file:
-        input_opened = True
-
-        log('Translating document...')
-
-        # get number of lines to be translated
-        contents = file.readlines()
-        total = len(contents)
-
-        for line in contents:
-            # show progress bar
-            print(progress_bar(i, total))
-
-            # translate line
-            translated_line = translate(line)
-            translation.append(translated_line)
-
-            i += 1
-
-        log('Document translated!')
-
-except:
-    problem = 'Document could not be translated'
-    if input_opened == False:
-        problem = problem + '\n' + 'Input document could not be opened'
-    problem = problem + '\n' + str(i - 1) + ' lines translated'
-    error(problem)
-
-try:
-    # write translation to output file
-    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/output.txt', 'w') as output:
-        log('Saving translation...')
-        output.writelines('\n'.join(translation))
-        log('Translation saved!')
-
-    log('Done!')
-
-except:
-    error('Translation could not be saved')
-
-# save logs
-write_logs(logs)
+window.close()
