@@ -1,16 +1,11 @@
+import os
+# silence TensorFlow logs
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 import keras_nlp
 import pickle
-
-# load in pickled tokenizers
-with open('../tokenizers/eng-tokenizer.pickle', 'rb') as handle:
-    eng_tokenizer = pickle.load(handle)
-
-with open('../tokenizers/tib-tokenizer.pickle', 'rb') as handle:
-    tib_tokenizer = pickle.load(handle)
-
-# load in model
-tib_eng_translator = tf.keras.models.load_model("../models/tib-eng-translator-0.2.0.keras")
+import datetime
+import sys
 
 # define constants
 MAX_SEQUENCE_LENGTH = 15
@@ -62,6 +57,114 @@ def translate(input_sentences):
         pass
     return generated_sentences
 
-def main():
-    # TODO
-    pass
+# define function for progress bar
+def progress_bar(i, total):
+    print('Translating document...')
+    # clear previous progress
+    os.system('clear')
+    for line in logs:    
+        print(line[0])
+    # progress bar
+    length = 50
+    progress = int(round((i / total) * length, 0))
+    filled = '█' * progress
+    not_filled = '-' * (length - progress)
+    bar = '[' + filled + not_filled + ']'
+    return bar
+
+# defining function to keep logs
+def log(update):
+    print(update)
+    logs.append((update, datetime.datetime.now().strftime("%B %d, %Y")))
+
+# define function to write logs
+def write_logs(logs):
+    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/logs.txt', 'w') as output:
+        output.writelines(logs)
+        print('See logs.txt for process information')
+
+def error(problem):
+    log(problem)
+    write_logs(logs)
+    sys.exit()
+
+logs = []
+
+os.system('clear')
+log('Running...')
+
+try:
+    # load in pickled tokenizers
+    log('Loading tokenizers...')
+
+    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/eng-tokenizer.pickle', 'rb') as handle:
+        eng_tokenizer = pickle.load(handle)
+
+    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/tib-tokenizer.pickle', 'rb') as handle:
+        tib_tokenizer = pickle.load(handle)
+
+    log('Tokenizers loaded!')
+except:
+    error('Tokenizers failed to load')
+
+try:
+    # load in model
+    log('Loading model...')
+    tib_eng_translator = tf.keras.models.load_model("/home/j/Documents/Projects/Iron-Bridge/lotsawa/models/tib-eng-translator-0.2.0.keras")
+    log('Model loaded!')
+
+except:
+    error('Model failed to load')
+
+# initialize counter of translated lines and flag for successful opening of input
+i = 1
+input_opened = False
+
+try:
+    translation = []
+
+    in_text = '/home/j/Documents/Projects/Iron-Bridge/lotsawa/data/test-page/test-tibetan'
+
+    # translated inputted file
+    with open(in_text, 'r') as file:
+        input_opened = True
+
+        log('Translating document...')
+
+        # get number of lines to be translated
+        contents = file.readlines()
+        total = len(contents)
+
+        for line in contents:
+            # show progress bar
+            print(progress_bar(i, total))
+
+            # translate line
+            translated_line = translate(line)
+            translation.append(translated_line)
+
+            i += 1
+
+        log('Document translated!')
+
+except:
+    problem = 'Document could not be translated'
+    if input_opened == False:
+        problem = problem + '\n' + 'Input document could not be opened'
+    problem = problem + '\n' + str(i - 1) + ' lines translated'
+    error(problem)
+
+try:
+    # write translation to output file
+    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/output.txt', 'w') as output:
+        log('Saving translation...')
+        output.writelines('\n'.join(translation))
+        log('Translation saved!')
+
+    log('Done!')
+
+except:
+    error('Translation could not be saved')
+
+# save logs
+write_logs(logs)
