@@ -77,6 +77,7 @@ def progress_bar(i, total):
 
 # defining function to keep logs
 def log(update):
+    print(update)
     logs.append((update, datetime.datetime.now().strftime("%H:%M:%S %m/%d/%Y")))
     return update
 
@@ -115,7 +116,7 @@ def load_models():
     except:
         error('Model failed to load')
 
-    return eng_tokenizer, tib_tokenizer,tib_eng_translator, 'Models Loaded'
+    return eng_tokenizer, tib_tokenizer,tib_eng_translator
 
 def save_translation(translation):
     try:
@@ -171,7 +172,9 @@ def translate_text(in_text, eng_tokenizer, tib_tokenizer,tib_eng_translator):
 
 def translate(text):
     eng_tokenizer, tib_tokenizer,tib_eng_translator = load_models()
+    print('Here 1')
     translation = translate_text(text, eng_tokenizer, tib_tokenizer,tib_eng_translator)
+    print('Here!')
     save_translation(translation)
     write_logs(logs)
     return '\n'.join(translation)

@@ -108,7 +108,7 @@ while True:
 
     elif event == 'Translate':
         try:
-            translation = lotsawa_funcs.translate(filename) # TODO
+            translation = lotsawa_funcs.translate(filename)
             window["-MONITOR-"].update('\n'.join(str(log).replace('(', '').replace(')', ''). replace('\'', '').replace(',', ' at ') for log in lotsawa_funcs.logs))
             window["-TRANSLATION TEXT-"].update(translation)
         except:
