@@ -123,7 +123,7 @@ input_opened = False
 try:
     translation = []
 
-    in_text = '/home/j/Documents/Projects/Iron-Bridge/lotsawa/data/test-page/test-tibetan'
+    in_text = '/home/j/Documents/Projects/Iron-Bridge/lotsawa/data/test-page/test-tibetan.txt'
 
     # translated inputted file
     with open(in_text, 'r') as file:
