@@ -17,25 +17,33 @@ file_list_column = [
         sg.Listbox(
             values=[],
             enable_events=True,
-            size=(40,40),
+            size=(40,25),
             key='-FILE LIST-'
         )
     ],
+    [
+        sg.HSeparator(),
+    ],
+    [
+        sg.Text('Process Information:',
+            size=(40,15),
+            key='-MONITOR-')
+    ]
 ]
 
 # define file viewer column
 file_viewer_column = [
-    [sg.Text("Contens of chosen file:")],
-    [sg.Text(size=(70, 1), key="-TOUT-")],
-    [sg.Text(size=(70,40),key="-TEXT-")],
+    [sg.Text("Contents of chosen file:")],
+    [sg.Text(size=(50, 1), key="-TOUT-")],
+    [sg.Text(size=(50,40),key="-TEXT-")],
     [sg.Button("Translate")]
 ]
 
 # define translation viewer column
 translation_viewer_column = [
     [sg.Text("Translation of chosen file:")],
-    [sg.Text(size=(70, 1), key="-TRANSLATION OUT-")],
-    [sg.Text(size=(70,40),key="-TRANSLATION TEXT-")]
+    [sg.Text(size=(50, 1), key="-TRANSLATION OUT-")],
+    [sg.Text(size=(50,40),key="-TRANSLATION TEXT-")]
 ]
 
 # define window layout
