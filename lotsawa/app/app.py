@@ -26,8 +26,14 @@ file_list_column = [
     ],
     [
         sg.Text('Process Information:',
+            size=(40,1),
+            key='-MONITOR HEADER-')
+    ],
+    [
+        sg.Text(
             size=(40,15),
-            key='-MONITOR-')
+            key='-MONITOR-'
+            )
     ]
 ]
 
@@ -103,6 +109,7 @@ while True:
     elif event == 'Translate':
         try:
             translation = lotsawa_funcs.translate(filename) # TODO
+            window["-MONITOR-"].update('\n'.join(str(log).replace('(', '').replace(')', ''). replace('\'', '').replace(',', ' at ') for log in lotsawa_funcs.logs))
             window["-TRANSLATION TEXT-"].update(translation)
         except:
             pass
