@@ -6,6 +6,7 @@ import keras_nlp
 import pickle
 import datetime
 import sys
+import PySimpleGUI as sg
 
 # define constants
 MAX_SEQUENCE_LENGTH = 15
@@ -131,48 +132,28 @@ def save_translation(translation):
     except:
         error('Translation could not be saved')
 
-def translate_text(in_text, eng_tokenizer, tib_tokenizer,tib_eng_translator):
+def translate_text(in_text, eng_tokenizer, tib_tokenizer,tib_eng_translator, window, info):
     # initialize counter of translated lines and flag for successful opening of input
     i = 1
-    input_opened = False
 
-    try:
-        translation = []
+    translation = []
 
-        # translated inputted file
-        with open(in_text, 'r') as file:
-            input_opened = True
+    # translated inputted file
+    with open(in_text, 'r') as file:
 
-            log('Translating document...')
+        # get number of lines to be translated
+        contents = file.readlines()
+        total = len(contents)
 
-            # get number of lines to be translated
-            contents = file.readlines()
-            total = len(contents)
+        for line in contents:
+            # show progress bar
+            window['-MONITOR-'].update('\n'.join(info) + '\n' + progress_bar(i, total))
+            window.refresh()
 
-            for line in contents:
-                # show progress bar
-                print(progress_bar(i, total))
+            # translate line
+            translated_line = translate_line(line, eng_tokenizer, tib_tokenizer,tib_eng_translator)
+            translation.append(translated_line)
 
-                # translate line
-                translated_line = translate_line(line, eng_tokenizer, tib_tokenizer,tib_eng_translator)
-                translation.append(translated_line)
+            i += 1
 
-                i += 1
-
-            log('Document translated!')
-
-            return translation
-
-    except:
-        problem = 'Document could not be translated'
-        if input_opened == False:
-            problem = problem + '\n' + 'Input document could not be opened'
-        problem = problem + '\n' + str(i - 1) + ' lines translated'
-        error(problem)
-
-def translate(text):
-    eng_tokenizer, tib_tokenizer,tib_eng_translator = load_models()
-    translation = translate_text(text, eng_tokenizer, tib_tokenizer,tib_eng_translator)
-    save_translation(translation)
-    write_logs(logs)
-    return '\n'.join(translation)
+        return '\n'.join(translation)

@@ -1,117 +1,94 @@
+import os
+# silence TensorFlow logs
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+import tensorflow as tf
 import PySimpleGUI as sg
 import os.path
 import lotsawa_funcs
+from gui_layout import layout
+import pickle
 
-# define file list column
-file_list_column = [
-    [
-        sg.Text("Folder"),
-        sg.In(
-            size=(20,1), 
-            enable_events=True, 
-            key="-FOLDER-"
-            ),
-        sg.FolderBrowse(),
-    ],
-    [
-        sg.Listbox(
-            values=[],
-            enable_events=True,
-            size=(40,25),
-            key='-FILE LIST-'
-        )
-    ],
-    [
-        sg.HSeparator(),
-    ],
-    [
-        sg.Text('Process Information:',
-            size=(40,1),
-            key='-MONITOR HEADER-')
-    ],
-    [
-        sg.Text(
-            size=(40,15),
-            key='-MONITOR-'
-            )
-    ]
-]
+def main():
+    # create the window
+    window = sg.Window(title='Lotsawa', layout=layout)
 
-# define file viewer column
-file_viewer_column = [
-    [sg.Text("Contents of chosen file:")],
-    [sg.Text(size=(50, 1), key="-TOUT-")],
-    [sg.Text(size=(50,40),key="-TEXT-")],
-    [sg.Button("Translate")]
-]
+    # create event loop
+    while True:
+        event, values = window.read()
 
-# define translation viewer column
-translation_viewer_column = [
-    [sg.Text("Translation of chosen file:")],
-    [sg.Text(size=(50, 1), key="-TRANSLATION OUT-")],
-    [sg.Text(size=(50,40),key="-TRANSLATION TEXT-")]
-]
+        # end program if user closes window
+        if event == "Exit" or event == sg.WIN_CLOSED:
+            break
 
-# define window layout
-layout = [
-    [
-        sg.Column(file_list_column),
-        sg.VSeparator(),
-        sg.Column(file_viewer_column, scrollable=False, vertical_scroll_only=True),
-        sg.VSeparator(),
-        sg.Column(translation_viewer_column, scrollable=False, vertical_scroll_only=True)
-    ]
-]
+        # with a folder selected, make a list of file in folder
+        if event == "-FOLDER-":
+            folder = values["-FOLDER-"]
+            try:
+                # get list of files in folder
+                file_list = os.listdir(folder)
+            except:
+                file_list = []
 
+            fnames = [
+                f 
+                for f in file_list
+                if os.path.isfile(os.path.join(folder, f)) and f.lower().endswith('.txt')
+            ]
 
-# create the window
-window = sg.Window(title='Lotsawa', layout=layout)
+            window["-FILE LIST-"].update(fnames)
 
-# create event loop
-while True:
-    event, values = window.read()
+        elif event == "-FILE LIST-":
+            try:
+                filename = os.path.join(
+                    values["-FOLDER-"], values["-FILE LIST-"][0]
+                )
+                window["-TOUT-"].update(values["-FILE LIST-"][0])
 
-    # end program if user closes window
-    if event == "Exit" or event == sg.WIN_CLOSED:
-        break
+                with open(filename, 'r') as f:
+                    contents = f.read()
 
-    # with a folder selected, make a list of file in folder
-    if event == "-FOLDER-":
-        folder = values["-FOLDER-"]
-        try:
-            # get list of files in folder
-            file_list = os.listdir(folder)
-        except:
-            file_list = []
+                window["-TEXT-"].update(contents)
+            except:
+                pass
 
-        fnames = [
-            f 
-            for f in file_list
-            if os.path.isfile(os.path.join(folder, f)) and f.lower().endswith('.txt')
-        ]
+        elif event == 'Translate':
+            try:
+                info = []
+                # load english tokenizer
+                info.append('Running...')
+                window["-MONITOR-"].update('\n'.join(info))
+                window.refresh()
+                with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/eng-tokenizer.pickle', 'rb') as handle:
+                    eng_tokenizer = pickle.load(handle)
+                info.append('English Tokenizer Loaded')
 
-        window["-FILE LIST-"].update(fnames)
+                # load tibetan tokenizer
+                window["-MONITOR-"].update('\n'.join(info) + '\nLoading Tibetan Tokenizer...')
+                window.refresh()
+                with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/tib-tokenizer.pickle', 'rb') as handle:
+                    tib_tokenizer = pickle.load(handle)
+                info.append('Tibetan Tokenizer Loaded')
+                window["-MONITOR-"].update('\n'.join(info))
 
-    elif event == "-FILE LIST-":
-        try:
-            filename = os.path.join(
-                values["-FOLDER-"], values["-FILE LIST-"][0]
-            )
-            window["-TOUT-"].update(values["-FILE LIST-"][0])
+                # load translation model
+                window["-MONITOR-"].update('\n'.join(info) + '\nLoading Translation Model...')
+                window.refresh()
+                tib_eng_translator = tf.keras.models.load_model("/home/j/Documents/Projects/Iron-Bridge/lotsawa/models/tib-eng-translator-0.2.0.keras")
+                info.append('Translation Model Loaded')
 
-            with open(filename, 'r') as f:
-                contents = f.read()
+                # translate text
+                window["-MONITOR-"].update('\n'.join(info) + '\nTranslating Text...')
+                window.refresh()
+                translation = lotsawa_funcs.translate_text(filename, eng_tokenizer, tib_tokenizer, tib_eng_translator, window, info)
+                info.append('Text Translated')
+                window["-MONITOR-"].update('\n'.join(info))
 
-            window["-TEXT-"].update(contents)
-        except:
-            pass
+                window["-TRANSLATION TEXT-"].update(translation)
+                window.refresh()
+            except:
+                window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
 
-    elif event == 'Translate':
-        try:
-            translation = lotsawa_funcs.translate(filename)
-            window["-MONITOR-"].update('\n'.join(str(log).replace('(', '').replace(')', ''). replace('\'', '').replace(',', ' at ') for log in lotsawa_funcs.logs))
-            window["-TRANSLATION TEXT-"].update(translation)
-        except:
-            pass
+    window.close()
 
-window.close()
+if __name__=='__main__':
+    main()
