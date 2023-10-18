@@ -172,9 +172,7 @@ def translate_text(in_text, eng_tokenizer, tib_tokenizer,tib_eng_translator):
 
 def translate(text):
     eng_tokenizer, tib_tokenizer,tib_eng_translator = load_models()
-    print('Here 1')
     translation = translate_text(text, eng_tokenizer, tib_tokenizer,tib_eng_translator)
-    print('Here!')
     save_translation(translation)
     write_logs(logs)
     return '\n'.join(translation)
