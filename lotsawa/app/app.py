@@ -76,7 +76,7 @@ def main():
                     info.append('English Tokenizer Failed to Load')
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
-                    window.refresh()
+                    lotsawa_funcs.write_logs(info, window)
                     continue
 
                 try:
@@ -93,7 +93,7 @@ def main():
                     info.append('Tibetan Tokenizer Failed to Load')
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
-                    window.refresh()
+                    lotsawa_funcs.write_logs(info, window)
                     continue
 
                 try:
@@ -108,7 +108,7 @@ def main():
                     info.append('Translation Model Failed to Load')
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
-                    window.refresh()
+                    lotsawa_funcs.write_logs(info, window)
                     continue
 
                 try:
@@ -128,6 +128,7 @@ def main():
                     info.append('Translation Failed')
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
+                    lotsawa_funcs.write_logs(info, window)
                     continue
 
                 try:
@@ -140,23 +141,15 @@ def main():
                     info.append('Done!')
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update(translation)
-                    window.refresh()
+                    lotsawa_funcs.write_logs(info, window)
                 except:
                     info.append('Failed to Save Translation')
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
+                    lotsawa_funcs.write_logs(info, window)
                     continue
 
-                try:
-                    lotsawa_funcs.write_logs(info)
-                    info.append('Process logs were saved to \'logs.txt\'')
-                    window["-MONITOR-"].update('\n'.join(info))
-                    window.refresh()
-                except:
-                    info.append('Logs Were Not Saved Correctly')
-                    window["-MONITOR-"].update('\n'.join(info))
-                    window.refresh()
-                    continue
+        
 
                 
                     

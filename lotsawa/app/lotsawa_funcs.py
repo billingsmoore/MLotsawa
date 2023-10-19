@@ -3,10 +3,6 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 import keras_nlp
-import pickle
-import datetime
-import sys
-import PySimpleGUI as sg
 
 # define constants
 MAX_SEQUENCE_LENGTH = 15
@@ -16,8 +12,32 @@ INTERMEDIATE_DIM = 2048
 NUM_HEADS = 8
 AUTOTUNE = tf.data.AUTOTUNE
 
-# initialize logs
-logs = []
+### HELPER FUNCTION
+
+# define function for progress bar
+def progress_bar(i, total):
+    length = 50
+    progress = int(round((i / total) * length, 0))
+    filled = '█' * progress
+    not_filled = '-' * (length - progress)
+    bar = '[' + filled + not_filled + ']'
+    return bar
+
+# define function to write logs
+def write_logs(info, window):
+    try:
+        with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/logs.txt', 'w') as output:
+            output.writelines('\n'.join(str(log).replace('(', '').replace(')', ''). replace('\'', '').replace(',', ' at ') for log in info))
+        info.append('Process logs were saved to \'logs.txt\'')
+        window["-MONITOR-"].update('\n'.join(info))
+        window.refresh()
+    except:
+        info.append('Logs Were Not Saved Correctly')
+        window["-MONITOR-"].update('\n'.join(info))
+        window.refresh()
+
+
+### MAIN FUNCTIONS
 
 # define translation function
 def translate_line(input_sentences, eng_tokenizer, tib_tokenizer, tib_eng_translator):
@@ -60,26 +80,6 @@ def translate_line(input_sentences, eng_tokenizer, tib_tokenizer, tib_eng_transl
     except:
         pass
     return generated_sentences
-
-# define function for progress bar
-def progress_bar(i, total):
-    print('Translating document...')
-    # clear previous progress
-    os.system('clear')
-    for line in logs:    
-        print(line[0])
-    # progress bar
-    length = 50
-    progress = int(round((i / total) * length, 0))
-    filled = '█' * progress
-    not_filled = '-' * (length - progress)
-    bar = '[' + filled + not_filled + ']'
-    return bar
-
-# define function to write logs
-def write_logs(logs):
-    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/logs.txt', 'w') as output:
-        output.writelines('\n'.join(str(log).replace('(', '').replace(')', ''). replace('\'', '').replace(',', ' at ') for log in logs))
 
 def translate_text(in_text, eng_tokenizer, tib_tokenizer,tib_eng_translator, window, info):
     # initialize counter of translated lines and flag for successful opening of input
