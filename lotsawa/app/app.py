@@ -12,10 +12,12 @@ from time import perf_counter
 def main():
     # create the window
     window = sg.Window(title='Lotsawa', layout=layout)
+    filename = None
 
     # create event loop
     while True:
         event, values = window.read()
+        
 
         # end program if user closes window
         if event == "Exit" or event == sg.WIN_CLOSED:
@@ -53,54 +55,76 @@ def main():
                 pass
 
         elif event == 'Translate':
-            try:
-                info = []
-                # load english tokenizer
-                info.append('Running...')
-                window["-MONITOR-"].update('\n'.join(info))
+            if filename == None:
+                # confirm that a file has been selected
+                window["-MONITOR-"].update('Please select a file to translate.')
                 window.refresh()
-                tic = perf_counter()
-                with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/eng-tokenizer.pickle', 'rb') as handle:
-                    eng_tokenizer = pickle.load(handle)
-                toc = perf_counter()
-                info.append(f'English Tokenizer Loaded in {toc - tic:0.3f} seconds')
+            else:
+                try:
+                    # load english tokenizer
+                    info = []
+                    info.append('Running...')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window.refresh()
+                    tic = perf_counter()
+                    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/eng-tokenizer.pickle', 'rb') as handle:
+                        eng_tokenizer = pickle.load(handle)
+                    toc = perf_counter()
+                    info.append(f'English Tokenizer Loaded in {toc - tic:0.3f} seconds')
+                except:
+                    info.append('English Tokenizer Failed to Load')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
+                    window.refresh()
 
-                # load tibetan tokenizer
-                window["-MONITOR-"].update('\n'.join(info) + '\nLoading Tibetan Tokenizer...')
-                window.refresh()
-                tic = perf_counter()
-                with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/tib-tokenizer.pickle', 'rb') as handle:
-                    tib_tokenizer = pickle.load(handle)
-                toc = perf_counter()
-                info.append(f'Tibetan Tokenizer Loaded in {toc - tic:0.3f} seconds')
-                window["-MONITOR-"].update('\n'.join(info))
+                try:
+                    # load tibetan tokenizer
+                    window["-MONITOR-"].update('\n'.join(info) + '\nLoading Tibetan Tokenizer...')
+                    window.refresh()
+                    tic = perf_counter()
+                    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/tib-tokenizer.pickle', 'rb') as handle:
+                        tib_tokenizer = pickle.load(handle)
+                    toc = perf_counter()
+                    info.append(f'Tibetan Tokenizer Loaded in {toc - tic:0.3f} seconds')
+                    window["-MONITOR-"].update('\n'.join(info))
+                except:
+                    info.append('Tibetan Tokenizer Failed to Load')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
+                    window.refresh()
 
-                # load translation model
-                window["-MONITOR-"].update('\n'.join(info) + '\nLoading Translation Model... (This may take a moment.)')
-                window.refresh()
-                tic = perf_counter()
-                tib_eng_translator = tf.keras.models.load_model("/home/j/Documents/Projects/Iron-Bridge/lotsawa/models/tib-eng-translator-0.2.0.keras")
-                toc = perf_counter()
-                info.append(f'Translation Model Loaded in {toc - tic:0.3f} seconds')
+                try:
+                    # load translation model
+                    window["-MONITOR-"].update('\n'.join(info) + '\nLoading Translation Model... (This may take a moment.)')
+                    window.refresh()
+                    tic = perf_counter()
+                    tib_eng_translator = tf.keras.models.load_model("/home/j/Documents/Projects/Iron-Bridge/lotsawa/models/tib-eng-translator-0.2.0.keras")
+                    toc = perf_counter()
+                    info.append(f'Translation Model Loaded in {toc - tic:0.3f} seconds')
+                except:
+                    info.append('Translation Model Failed to Load')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
+                    window.refresh()
 
-                # translate text
-                info.append('Translating Text...')
-                window["-MONITOR-"].update('\n'.join(info))
-                window.refresh()
-                tic = perf_counter()
-                translation = lotsawa_funcs.translate_text(filename, eng_tokenizer, tib_tokenizer, tib_eng_translator, window, info)
-                toc = perf_counter()
-                info.remove('Translating Text...')
-                info.append(f'Text Translated in {toc - tic:0.3f} seconds')
-                info.append('Done!')
-                window["-MONITOR-"].update('\n'.join(info))
-
-                window["-TRANSLATION TEXT-"].update(translation)
-                window.refresh()
-            except:
-                info.append('Translation Failed')
-                window["-MONITOR-"].update('\n'.join(info))
-                window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
+                try:
+                    # translate text
+                    info.append('Translating Text...')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window.refresh()
+                    tic = perf_counter()
+                    translation = lotsawa_funcs.translate_text(filename, eng_tokenizer, tib_tokenizer, tib_eng_translator, window, info)
+                    toc = perf_counter()
+                    info.remove('Translating Text...')
+                    info.append(f'Text Translated in {toc - tic:0.3f} seconds')
+                    info.append('Done!')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window["-TRANSLATION TEXT-"].update(translation)
+                    window.refresh()
+                except:
+                    info.append('Translation Failed')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
 
     window.close()
 
