@@ -29,7 +29,7 @@ headers = {
 # You can pass more than one object in body.
 body = []
 
-with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/data/ankhi/bing-batches/test-batch.txt', 'r') as f:
+with open('lotsawa/data/ankhi/bing-batches/mini-batches/mini-batches0.txt', 'r') as f:
     for line in f:
         body.append({'text': line})
 

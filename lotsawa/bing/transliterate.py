@@ -22,7 +22,7 @@ pairs = []
 for i in range(len(tib)):
     pairs.append((tib[i], eng[i]))
 
-with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/bing/test-pairs.txt', 'w') as f: # make sure to change to 'a'
+with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/bing/minibatch0-pairs.txt', 'w') as f: # make sure to change to 'a'
     f.writelines('\n'.join(str(pair).replace('\'', '')
                                     .replace('\\n', '')
                                     .replace('(', '')
