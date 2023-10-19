@@ -55,6 +55,7 @@ def main():
                 pass
 
         elif event == 'Translate':
+            window["-TRANSLATION TEXT-"].update('')
             if filename == None:
                 # confirm that a file has been selected
                 window["-MONITOR-"].update('Please select a file to translate.')
@@ -76,6 +77,7 @@ def main():
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
                     window.refresh()
+                    continue
 
                 try:
                     # load tibetan tokenizer
@@ -92,6 +94,7 @@ def main():
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
                     window.refresh()
+                    continue
 
                 try:
                     # load translation model
@@ -106,6 +109,7 @@ def main():
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
                     window.refresh()
+                    continue
 
                 try:
                     # translate text
@@ -117,7 +121,6 @@ def main():
                     toc = perf_counter()
                     info.remove('Translating Text...')
                     info.append(f'Text Translated in {toc - tic:0.3f} seconds')
-                    info.append('Done!')
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update(translation)
                     window.refresh()
@@ -125,6 +128,38 @@ def main():
                     info.append('Translation Failed')
                     window["-MONITOR-"].update('\n'.join(info))
                     window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
+                    continue
+
+                try:
+                    # save translation to output file
+                    window["-MONITOR-"].update('\n'.join(info) + '\nSaving Translation...')
+                    window.refresh()
+                    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/output.txt', 'w') as output:
+                        output.writelines(translation)
+                    info.append(f'Translation Saved to \'output.txt\'')
+                    info.append('Done!')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window["-TRANSLATION TEXT-"].update(translation)
+                    window.refresh()
+                except:
+                    info.append('Failed to Save Translation')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
+                    continue
+
+                try:
+                    lotsawa_funcs.write_logs(info)
+                    info.append('Process logs were saved to \'logs.txt\'')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window.refresh()
+                except:
+                    info.append('Logs Were Not Saved Correctly')
+                    window["-MONITOR-"].update('\n'.join(info))
+                    window.refresh()
+                    continue
+
+                
+                    
 
     window.close()
 

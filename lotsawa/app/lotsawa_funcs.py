@@ -76,61 +76,11 @@ def progress_bar(i, total):
     bar = '[' + filled + not_filled + ']'
     return bar
 
-# defining function to keep logs
-def log(update):
-    print(update)
-    logs.append((update, datetime.datetime.now().strftime("%H:%M:%S %m/%d/%Y")))
-    return update
-
 # define function to write logs
 def write_logs(logs):
     with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/logs.txt', 'w') as output:
         output.writelines('\n'.join(str(log).replace('(', '').replace(')', ''). replace('\'', '').replace(',', ' at ') for log in logs))
         print('See logs.txt for process information')
-
-def error(problem):
-    log(problem)
-    write_logs(logs)
-    sys.exit()
-
-def load_models():
-    # load tokenizers
-    try:
-        # load in pickled tokenizers
-        log('Loading tokenizers...')
-
-        with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/eng-tokenizer.pickle', 'rb') as handle:
-            eng_tokenizer = pickle.load(handle)
-
-        with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/tib-tokenizer.pickle', 'rb') as handle:
-            tib_tokenizer = pickle.load(handle)
-
-        log('Tokenizers loaded!')
-    except:
-        error('Tokenizers failed to load')
-
-    # load translation model
-    try:
-        log('Loading model...')
-        tib_eng_translator = tf.keras.models.load_model("/home/j/Documents/Projects/Iron-Bridge/lotsawa/models/tib-eng-translator-0.2.0.keras")
-        log('Model loaded!')
-    except:
-        error('Model failed to load')
-
-    return eng_tokenizer, tib_tokenizer,tib_eng_translator
-
-def save_translation(translation):
-    try:
-        # write translation to output file
-        with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/output.txt', 'w') as output:
-            log('Saving translation...')
-            output.writelines('\n'.join(translation))
-            log('Translation saved!')
-
-        log('Done!')
-
-    except:
-        error('Translation could not be saved')
 
 def translate_text(in_text, eng_tokenizer, tib_tokenizer,tib_eng_translator, window, info):
     # initialize counter of translated lines and flag for successful opening of input
