@@ -80,7 +80,6 @@ def progress_bar(i, total):
 def write_logs(logs):
     with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/logs.txt', 'w') as output:
         output.writelines('\n'.join(str(log).replace('(', '').replace(')', ''). replace('\'', '').replace(',', ' at ') for log in logs))
-        print('See logs.txt for process information')
 
 def translate_text(in_text, eng_tokenizer, tib_tokenizer,tib_eng_translator, window, info):
     # initialize counter of translated lines and flag for successful opening of input
