@@ -101,7 +101,7 @@ def main():
                     window["-MONITOR-"].update('\n'.join(info) + '\nLoading Translation Model... (This may take a moment.)')
                     window.refresh()
                     tic = perf_counter()
-                    tib_eng_translator = tf.keras.models.load_model("/home/j/Documents/Projects/Iron-Bridge/lotsawa/models/tib-eng-translator-0.2.0.keras")
+                    tib_eng_translator = tf.keras.models.load_model("/home/j/Documents/Projects/Iron-Bridge/lotsawa/models/tib-eng-translator-0.3.1.keras")
                     toc = perf_counter()
                     info.append(f'Translation Model Loaded in {toc - tic:0.3f} seconds')
                 except:
