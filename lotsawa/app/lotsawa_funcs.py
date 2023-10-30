@@ -60,7 +60,7 @@ def translate_line(input_sentences, eng_tokenizer, tib_tokenizer, tib_eng_transl
     pad = tf.fill((batch_size, length - 1), eng_tokenizer.token_to_id("[PAD]"))
     prompt = tf.concat((start, pad), axis=-1)
 
-    generated_tokens = keras_nlp.samplers.GreedySampler()(
+    generated_tokens = keras_nlp.samplers.TopKSampler(4)(
         next,
         prompt,
         end_token_id=eng_tokenizer.token_to_id("[END]"),
@@ -101,8 +101,9 @@ def translate_text(in_text, eng_tokenizer, tib_tokenizer,tib_eng_translator, win
 
             # translate line
             translated_line = translate_line(line, eng_tokenizer, tib_tokenizer,tib_eng_translator)
+            translation.append(line.replace('\n', ''))
             translation.append(translated_line)
-
+            translation.append('\n')
             i += 1
 
         return '\n'.join(translation)

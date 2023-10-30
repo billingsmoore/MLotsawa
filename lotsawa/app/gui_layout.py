@@ -39,7 +39,7 @@ file_list_column = [
 file_viewer_column = [
     [sg.Text("Contents of chosen file:")],
     [sg.Text(size=(50, 1), key="-TOUT-")],
-    [sg.Text(size=(50,40),key="-TEXT-")],
+    [sg.Text(size=(50,50),key="-TEXT-")],
     [sg.Button("Translate")]
 ]
 
@@ -47,7 +47,7 @@ file_viewer_column = [
 translation_viewer_column = [
     [sg.Text("Translation of chosen file:")],
     [sg.Text(size=(50, 1), key="-TRANSLATION OUT-")],
-    [sg.Text(size=(50,40),key="-TRANSLATION TEXT-")]
+    [sg.Text(size=(50,50),key="-TRANSLATION TEXT-")]
 ]
 
 # define window layout
