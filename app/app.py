@@ -68,7 +68,7 @@ def main():
                     window["-MONITOR-"].update('\n'.join(info))
                     window.refresh()
                     tic = perf_counter()
-                    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/eng-tokenizer.pickle', 'rb') as handle:
+                    with open('tokenizers/eng-tokenizer.pickle', 'rb') as handle:
                         eng_tokenizer = pickle.load(handle)
                     toc = perf_counter()
                     info.append(f'English Tokenizer Loaded in {toc - tic:0.3f} seconds')
@@ -84,7 +84,7 @@ def main():
                     window["-MONITOR-"].update('\n'.join(info) + '\nLoading Tibetan Tokenizer...')
                     window.refresh()
                     tic = perf_counter()
-                    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/tokenizers/tib-tokenizer.pickle', 'rb') as handle:
+                    with open('tokenizers/tib-tokenizer.pickle', 'rb') as handle:
                         tib_tokenizer = pickle.load(handle)
                     toc = perf_counter()
                     info.append(f'Tibetan Tokenizer Loaded in {toc - tic:0.3f} seconds')
@@ -101,7 +101,7 @@ def main():
                     window["-MONITOR-"].update('\n'.join(info) + '\nLoading Translation Model... (This may take a moment.)')
                     window.refresh()
                     tic = perf_counter()
-                    tib_eng_translator = tf.keras.models.load_model("/home/j/Documents/Projects/Iron-Bridge/lotsawa/models/tib-eng-translator-0.4.2.keras")
+                    tib_eng_translator = tf.keras.models.load_model("models/tib-eng-translator-0.4.2.keras")
                     toc = perf_counter()
                     info.append(f'Translation Model Loaded in {toc - tic:0.3f} seconds')
                 except:
@@ -135,7 +135,7 @@ def main():
                     # save translation to output file
                     window["-MONITOR-"].update('\n'.join(info) + '\nSaving Translation...')
                     window.refresh()
-                    with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/output.txt', 'w') as output:
+                    with open('outputs/output.txt', 'w') as output:
                         output.writelines(translation)
                     info.append(f'Translation Saved to \'output.txt\'')
                     info.append('Done!')

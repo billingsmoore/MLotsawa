@@ -16,17 +16,17 @@ AUTOTUNE = tf.data.AUTOTUNE
 
 # define function for progress bar
 def progress_bar(i, total):
-    length = 50
+    length = 30
     progress = int(round((i / total) * length, 0))
-    filled = '█' * progress
-    not_filled = '-' * (length - progress)
+    filled = ('=' * (progress-1)) + '>'
+    not_filled = '_' * (length - progress)
     bar = '[' + filled + not_filled + ']'
     return bar
 
 # define function to write logs
 def write_logs(info, window):
     try:
-        with open('/home/j/Documents/Projects/Iron-Bridge/lotsawa/outputs/logs.txt', 'w') as output:
+        with open('outputs/logs.txt', 'w') as output:
             output.writelines('\n'.join(str(log).replace('(', '').replace(')', ''). replace('\'', '').replace(',', ' at ') for log in info))
         info.append('Process logs were saved to \'logs.txt\'')
         window["-MONITOR-"].update('\n'.join(info))
