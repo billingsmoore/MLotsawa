@@ -60,7 +60,7 @@ def translate_line(input_sentences, eng_tokenizer, tib_tokenizer, tib_eng_transl
     pad = tf.fill((batch_size, length - 1), eng_tokenizer.token_to_id("[PAD]"))
     prompt = tf.concat((start, pad), axis=-1)
 
-    generated_tokens = keras_nlp.samplers.TopKSampler(4)(
+    generated_tokens = keras_nlp.samplers.TopKSampler(3)(
         next,
         prompt,
         end_token_id=eng_tokenizer.token_to_id("[END]"),

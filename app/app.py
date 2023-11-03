@@ -131,28 +131,26 @@ def main():
                     lotsawa_funcs.write_logs(info, window)
                     continue
 
-                try:
-                    # save translation to output file
-                    window["-MONITOR-"].update('\n'.join(info) + '\nSaving Translation...')
-                    window.refresh()
-                    with open('outputs/output.txt', 'w') as output:
-                        output.writelines(translation)
-                    info.append(f'Translation Saved to \'output.txt\'')
-                    info.append('Done!')
-                    window["-MONITOR-"].update('\n'.join(info))
-                    window["-TRANSLATION TEXT-"].update(translation)
-                    lotsawa_funcs.write_logs(info, window)
-                except:
-                    info.append('Failed to Save Translation')
-                    window["-MONITOR-"].update('\n'.join(info))
-                    window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
-                    lotsawa_funcs.write_logs(info, window)
-                    continue
 
-        
-
-                
-                    
+        elif event == 'Accept Translation':
+            translation = values["-TRANSLATION TEXT-"]
+            try:
+                # save translation to output file
+                window["-MONITOR-"].update('\n'.join(info) + '\nSaving Translation...')
+                window.refresh()
+                with open('outputs/output.txt', 'w') as output:
+                    output.writelines(translation)
+                info.append(f'Translation Saved to \'output.txt\'')
+                info.append('Done!')
+                window["-MONITOR-"].update('\n'.join(info))
+                window["-TRANSLATION TEXT-"].update(translation)
+                lotsawa_funcs.write_logs(info, window)
+            except:
+                info.append('Failed to Save Translation')
+                window["-MONITOR-"].update('\n'.join(info))
+                window["-TRANSLATION TEXT-"].update('Error: Translation Failed')
+                lotsawa_funcs.write_logs(info, window)
+                continue        
 
     window.close()
 
