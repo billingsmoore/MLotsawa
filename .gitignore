@@ -1,2 +1,6 @@
 /data
 /models
+/notebooks/t5/runs
+/notebooks/t5/wandb
+/notebooks/llama/runs
+/notebooks/llama/wandb
