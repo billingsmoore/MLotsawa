@@ -2,5 +2,5 @@
 /models
 /notebooks/t5/runs
 /notebooks/t5/wandb
-/notebooks/llama/runs
-/notebooks/llama/wandb
+/notebooks/llama2/runs
+/notebooks/llama2/wandb
