@@ -5,6 +5,8 @@ from Classical Tibetan to English.
 
 ## Introduction
 
+**TO DO!**
+
 ## Data
 
 The dataset for this project can be found here: 
@@ -311,4 +313,4 @@ Clearly, the quality of the results peaked at epoch 20. This translation does st
 
 ### Llama 2
 
-# TODO
+**TO DO!**
