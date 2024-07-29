@@ -1,0 +1,67 @@
+{
+    "os": "Linux-6.5.0-44-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-07-16T22:32:32.968354",
+    "startedAt": "2024-07-16T22:32:32.171791",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "codePathLocal": null,
+    "git": {
+        "remote": "https://github.com/billingsmoore/Iron-Bridge.git",
+        "commit": "70cee1e5aadb07aa59618f8d9547d2b5ef8e2b06"
+    },
+    "email": "billingsmoore@gmail.com",
+    "root": "/home/j/Documents/Projects/MLotsawa",
+    "host": "nk-home",
+    "username": "j",
+    "executable": "/bin/python",
+    "cpu_count": 2,
+    "cpu_count_logical": 4,
+    "cpu_freq": {
+        "current": 3450.0395,
+        "min": 1600.0,
+        "max": 3500.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3420.233,
+            "min": 1600.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3479.82,
+            "min": 1600.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3428.211,
+            "min": 1600.0,
+            "max": 3500.0
+        },
+        {
+            "current": 3483.711,
+            "min": 1600.0,
+            "max": 3500.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 917.2899627685547,
+            "used": 373.238094329834
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 4070",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 4070",
+            "memory_total": 12878610432
+        }
+    ],
+    "memory": {
+        "total": 15.534648895263672
+    }
+}
