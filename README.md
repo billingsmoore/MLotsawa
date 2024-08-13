@@ -16,7 +16,13 @@ Each section below provides a brief explanation of the decisions made for data u
 
 This dataset used for this project consists of pairs of sentences or phrases. The first member of each pair is a sentence or phrase in Classical Tibetan. The second member is the English translation of the first.
 
-The pairs are pulled from texts sourced from [Lotsawa House](lotsawahouse.org).
+The pairs are pulled from texts sourced from [Lotsawa House](lotsawahouse.org). There was an initial set of over 15 million pairs.
+
+The architecture selection process utilized a random subset of 100,000 pairs. A randomized 20,000 of which were used for evaluation and training.
+
+The model size selection process utilized a larger random subset of 1 million pairs and a separate set of 100,000 pairs for evaluation.
+
+The final training utilized a random subset of 10 million pairs and a seperate subset of 100,000 pairs for evaluation.
 
 ### Reference Text
 
