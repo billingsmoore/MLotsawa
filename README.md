@@ -8,6 +8,8 @@ The intended use case for this project is to be used locally on a reasonably pri
 
 Data for this project was taken from [Lotsawa House](lotsawahouse.org). The pre-trained model architecure used is Google's t5-large.
 
+[The trained, or finetuned, model can be found on the HuggingFaceHub](https://huggingface.co/billingsmoore/mlotsawa)
+
 Each section below provides a brief explanation of the decisions made for data usage, architecture selection, and size selection. The heading for each section also links to a longer explanation for that phase of the project.
 
 ## [Data](https://www.kaggle.com/datasets/billingsmoore/classical-tibetan-to-english-translation-dataset)
