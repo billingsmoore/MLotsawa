@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+src/thl_phonetic_transliteration/__init__.py
+src/thl_phonetic_transliteration/thl_phonetic_transliteration.py
+src/thl_phonetic_transliteration.egg-info/PKG-INFO
+src/thl_phonetic_transliteration.egg-info/SOURCES.txt
+src/thl_phonetic_transliteration.egg-info/dependency_links.txt
+src/thl_phonetic_transliteration.egg-info/top_level.txt
