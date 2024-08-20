@@ -6,3 +6,4 @@
 /notebooks/llama2/wandb
 /notebooks/size-selection/wandb
 /notebooks/final-model-training/wandb
+/.venv
