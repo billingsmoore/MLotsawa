@@ -4,6 +4,9 @@ model = 'billingsmoore/mlotsawa'
 translator = pipeline('translation', model=model)
 
 def translate(input):
+
+    # clean input for translation
+    input = input.strip()
     input = input.split('\n')
 
     # create translation

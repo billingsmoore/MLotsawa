@@ -4,18 +4,30 @@
     
     <head>
 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     </head>
 
     <body>
 
         <h1>MLotsawa</h1>
 
-        <form action="translate" method="post">
-            <textarea rows="12" cols="120" name="input">{{ input }}</textarea>
-            <input type="submit" value="Translate" id="translate">
-        </form>
+        <div id="input-box" class="text-box">
+            <form action="translate" method="post">
+                <textarea rows="12" cols="120" name="input">
+                {{ input }}
+                </textarea>
+                <input type="submit" value="Translate" id="translate-button" class="translate-button">
+            </form>
+        </div>
 
-        <textarea rows="12" cols="120" name="input">{{ translation }}</textarea>
+        <div id="output-box" class="text-box">
+            <textarea rows="12" cols="120" name="input">
+            {{ translation }}
+            </textarea>
+        </div>
+
+        
 
     </body>
 

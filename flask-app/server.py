@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from utils.translate import translate
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 @app.route('/')
 def index():
