@@ -13,10 +13,14 @@ def convert(input_text):
     Returns
         phonetic: a string of text which is the THL phonetic version of the input
     """
+
     # if input is Tibetan unicode, use pyewts to convert it to Wylie
     if is_tibetan_unicode(input_text):
         converter = pyewts.pyewts()
         wylie = converter.toWylie(input_text).split('\n')
+        # if input is already phonetic, return the input unchanged
+    elif is_phonetic(input_text):
+            return input_text
     else:
         wylie = input_text.split('\n')
 
@@ -26,6 +30,28 @@ def convert(input_text):
     phonetic = '\n'.join(phonetic)
 
     return phonetic
+
+# list of giveaway substrings to detect non-phonetic text
+giveaways = ['lth', 'cw', 'lpy', 'dpy', 'bsd', 'bzl', 'rgr', 'lgr', 
+             'sgr', 'dgr', 'dbr', 'bsgr', 'rbr', 'lbr', 'sbr', 'mgr',
+             'grw', 'rdz', 'gdz', 'brdz', 'mdz', 'brg', 'bsg', 'khw', 
+             'mkh','mkhy', 'dky', 'bky', 'brky', 'bsky', 'brl', 'bsl',
+             'smr', 'brn', 'bsn', 'rng', 'lng', 'sng', 'dng', 'brng', 
+             'bsng', 'mng', 'rny', 'sny', 'gny', 'brny', 'bsny', 'mny', 
+             'nyw', 'rmy', 'smy', 'bsr', 'shw', 'gsh', 'bsh', 'brt', 
+             'blt', 'bst', 'bld', 'mth', 'rkr', 'lkr', 'skr', 'lpr', 
+             'spr', 'dkr', 'dpr', 'bkr', 'bskr', 'bsr', 'khr', 'thr', 
+             'phr', 'mkhr', 'rts', 'sts', 'rtsw', 'stsw', 'gts', 'bts', 
+             'brts', 'bsts', 'tsh', 'tshw', 'mtsh', 'g.y', 'dby', 'zhw', 
+             'gzh', 'bzh']
+
+
+def is_phonetic(text):
+    for elt in giveaways:
+        if elt in text:
+            return False
+    else:
+        return True
 
 
 def is_tibetan_unicode(text):
@@ -49,33 +75,45 @@ def is_tibetan_unicode(text):
     return False
 
 # These are the character replacements to convert Wylie to THL phonetic
-replacements = [[['lth', 'rh', 'db'] , ' '],
-    [['rb', 'sb', 'sbr', 'lb', '’b', '\'b'] , 'b'],
-    [['c', 'cw', 'gc', 'bc', 'lc', 'py', 'lpy', 'spy', 'dpy', 'mch', '’ch', '\'ch', 'phy', '’phy', '\'phy'] , 'ch'],
-    [['rd', 'sd', 'gd', 'bd', 'brd', 'bsd', 'zl', 'bzl', 'ld', 'md', '’d', '\'d', 'dw'] , 'd'],
-    [['rgr', 'lgr', 'sgr', 'dgr', 'dbr', 'bsgr', 'rbr', 'lbr', 'sbr', 'mgr', '’gr', '\'gr', '’dr', '\'dr', '’br', '\'br', 'gr', 'br', 'grw'] , 'dr'],
-    [['rdz', 'gdz', 'brdz', 'mdz', '’dz', '\'dz'] , 'dz'],
-    [['rg', 'lg', 'sg', 'dg', 'bg', 'brg', 'bsg', 'lg', 'mg', '’g', '\'g', 'gw'] , 'g'],
-    [['rgy', 'lgy', 'sgy', 'dgy', 'bgy', 'brgy', 'bsgy', 'mgy', '’gy', '\'gy'] , 'gy'],
+replacements = [
+    # ad hoc
+    [['pan'], 'pen'],
+    [['w '], 'b'],
+    [['og '], 'ok '],
+    [['os'], 'ok'],
+    [['nams'], 'nam'],
+    [['jang'], 'chang'],
+    [['ns '], 'n'],
+    [['yas'], 'ye'],
+    [['dak'], 'dag'],
+    # from wikipedia
+    [['lth', 'rh', 'db'] , ' '],
+    [['rb', 'sb', 'sbr', 'lb'] , 'b'],
+    [['cw', 'gc', 'bc', 'lc', 'py', 'lpy', 'spy', 'dpy', 'mch', 'phy'] , 'ch'],
+    [['rd', 'sd', 'gd', 'bd', 'brd', 'bsd', 'zl', 'bzl', 'ld', 'md', 'dw'] , 'd'],
+    [['rgr', 'lgr', 'sgr', 'dgr', 'dbr', 'bsgr', 'rbr', 'lbr', 'sbr', 'mgr', 'gr', 'br', 'grw'] , 'dr'],
+    [['rdz', 'gdz', 'brdz', 'mdz'] , 'dz'],
+    [['rg', 'lg', 'sg', 'dg', 'bg', 'brg', 'bsg', 'lg', 'mg', 'gw'] , 'g'],
+    [['rgy', 'lgy', 'sgy', 'dgy', 'bgy', 'brgy', 'bsgy', 'mgy'] , 'gy'],
     [['hw'] , 'h'],
-    [['rby', 'lby', 'sby', 'rj', 'gj', 'brj', 'lj', 'mj', '’j', '\'j', '’by', '\'by', 'by'] , 'j'],
+    [['rby', 'lby', 'sby', 'rj', 'gj', 'brj', 'lj', 'mj', 'by'] , 'j'],
     [['rk', 'lk', 'sk', 'kw', 'dk', 'bk', 'brk', 'bsk'] , 'k'],
-    [['khw', 'mkh', '’kh', '\'kh'] , 'kh'],
-    [['mkhy', '’khy', '\'khy'] , 'khy'],
+    [['khw', 'mkh'] , 'kh'],
+    [['mkhy'] , 'khy'],
     [['rky', 'lky', 'sky', 'dky', 'bky', 'brky', 'bsky'] , 'ky'],
     [['kl', 'gl', 'bl', 'rl', 'sl', 'brl', 'bsl', 'lw'] , 'l'],
     [['rm', 'sm', 'dm', 'smr', 'mr'] , 'm'],
     [['rn', 'sn', 'gn', 'brn', 'bsn', 'mn'] , 'n'],
     [['rng', 'lng', 'sng', 'dng', 'brng', 'bsng', 'mng'] , 'ng'],
     [['rny', 'sny', 'gny', 'brny', 'bsny', 'mny', 'nyw', 'rmy', 'smy', 'my'] , 'ny'],
-    [['sp', 'dp', 'lp', 'ph', '’ph', '\'ph'] , 'p'],
+    [['sp', 'dp', 'lp', 'ph'] , 'p'],
     [['rw'] , 'r'],
     [['sr', 'sw', 'gs', 'bs', 'bsr'] , 's'],
     [['shw', 'gsh', 'bsh'] , 'sh'],
-    [['rt', 'lt', 'st', 'tw', 'gt', 'bt', 'brt', 'blt', 'bst', 'bld', 'th', 'mth', '’th' '\'th'] , 't'],
-    [['kr', 'rkr', 'lkr', 'skr', 'pr', 'lpr', 'spr', 'dkr', 'dpr', 'bkr', 'bskr', 'bsr', 'khr', 'thr', 'phr', 'mkhr', '’khr', '’phr'] , 'tr'],
-    [['rts', 'sts', 'rtsw', 'stsw', 'gts', 'bts', 'brts', 'bsts', 'tsh', 'tshw', 'mtsh', '’tsh', '\'tsh'] , 'ts'],
-    [['db', 'b'] , 'w'],
+    [['rt', 'lt', 'st', 'tw', 'gt', 'bt', 'brt', 'blt', 'bst', 'bld', 'th', 'mth'] , 't'],
+    [['kr', 'rkr', 'lkr', 'skr', 'pr', 'lpr', 'spr', 'dkr', 'dpr', 'bkr', 'bskr', 'bsr', 'khr', 'thr', 'phr', 'mkhr'] , 'tr'],
+    [['rts', 'sts', 'rtsw', 'stsw', 'gts', 'bts', 'brts', 'bsts', 'tsh', 'tshw', 'mtsh'] , 'ts'],
+    [['db'] , 'w'],
     [['g.y', 'dby'] , 'y'],
     [['zw', 'gz', 'bz'] , 'z'],
     [['zh', 'zhw', 'gzh', 'bzh'] , 'zh']]
