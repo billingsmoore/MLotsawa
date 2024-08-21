@@ -1,5 +1,6 @@
 h1 {
     padding-left: 3%;
+    color: white;
 }
 
 body {
@@ -8,6 +9,12 @@ body {
 
 text {
     font-family: 'Times New Roman', Times, serif;
+}
+
+.header {
+    background-color: black;
+    width: 24%;
+
 }
 
 .text-box {
