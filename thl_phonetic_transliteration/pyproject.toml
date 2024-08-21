@@ -7,7 +7,7 @@ dependencies = [
     "pyewts"
 ]
 name = "thl_phonetic_transliteration"
-version = "0.0.6"
+version = "0.1.2"
 authors = [
   { name="billingsmoore", email="billingsmoore@gmail.com" },
 ]
