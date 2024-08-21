@@ -5,7 +5,7 @@ app = Flask(__name__, static_folder='static')
 
 @app.route('/')
 def index():
-    return render_template('index.html', input='', translation='')
+    return render_template('index.html', input='Enter phonetic Tibetan here.', translation='Translation will appear here.')
 
 @app.route('/translate', methods=["POST", "GET"])
 def serve_translation():
