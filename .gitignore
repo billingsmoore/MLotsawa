@@ -8,3 +8,4 @@
 /notebooks/final-model-training/wandb
 /.venv
 /flask-app/build
+/flask-app/dist
