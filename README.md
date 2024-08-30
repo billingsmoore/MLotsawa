@@ -12,7 +12,7 @@ For any questions or feedback, please email me at billingsmoore [at] gmail [dot]
 
 ## Getting Started
 
-A demo version of the app is currently available as a sneak peek. This demo is very much a work in progress and your feedback would be immensely valuable in improving it. You can try the demo on your own computer by downloading it from the link below. The demo currently expects input that has been transliterated into THL Simplified Phonetic Transliteration. It will accept input from unicode Tibetan Script or Wylie tranliteration but, for now, performance is substantially worse.
+A demo version of the app is currently available as a sneak peek. This demo is very much a work in progress and your feedback would be immensely valuable in improving it. You can try the demo on your own computer by downloading it from the link below. The demo currently expects input that has been transliterated into THL Simplified Phonetic Transliteration. It will accept input from unicode Tibetan Script or Wylie transliteration but, for now, performance is substantially worse.
 
 If you have any trouble getting started please don't hesitate to contact me for help or to set up time for a one-on-one demo.
 
