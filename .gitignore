@@ -9,3 +9,5 @@
 /.venv
 /flask-app/build
 /flask-app/dist
+/transliteration/data
+/transliteration/notebooks/wandb
