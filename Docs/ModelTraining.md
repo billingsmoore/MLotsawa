@@ -2,7 +2,7 @@
 
 The architecture that was used for model training was Google's T5. The size used was the 'Large' model with 770 million parameters. The original model can be found on Huggingface as google-t5/t5-large.
 
-This model was trained for 6 epochs on a set of 1 million sentence pairs, with an additional set of 100,000 sentence pairs used for evaluation.
+This model was trained for 6 epochs on a set of 1 million sentence pairs, with an additional set of 100,000 sentence pairs used for evaluation. It was then trained for 1 additional epoch on a set of 10 million sentence pairs with a separate set of 100,000 sentence pairs for evaluation.
 
 ## Training Results
 

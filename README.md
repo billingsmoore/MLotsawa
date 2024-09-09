@@ -44,6 +44,8 @@ The model size selection process utilized a larger random subset of 1 million pa
 
 The hyperparameter tuning process utilized a random subset of 10 million pairs and a seperate subset of 100,000 pairs for evaluation.
 
+For final model training, the set of 1 million was reused for 6 epochs, then the 10 million pair set was used for 1 additional epoch.
+
 ### Example Translation
 
 For an example translation, we can use 'A Brief Amitabha Sleeping Practice' by Jamyang Khyentse Chökyi Lodrö. I've provided a translation of the first two verses of the text side by side with Adam Pearcey's original translation.
