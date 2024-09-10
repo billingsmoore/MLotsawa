@@ -17,11 +17,13 @@ pip install thl-phonetic-transliteration
 ## Examples
 
 ```python
-from thl_phonetic_transliteration.converter import convert
+from thl_phonetic_transliteration.transliterator import Transliterator 
 
 tibetan_text = '<your Tibetan text>'
 
-thl_phonetics = convert(tibetan_text)
+transliterator = Transliterator()
+
+thl_phonetics = transliterator.convert(tibetan_text)
 ```
 ## License
 

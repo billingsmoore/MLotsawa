@@ -4,10 +4,10 @@ build-backend = "hatchling.build"
 
 [project]
 dependencies = [
-    "pyewts"
+    "transformers"
 ]
 name = "thl_phonetic_transliteration"
-version = "0.1.2"
+version = "0.2.3"
 authors = [
   { name="billingsmoore", email="billingsmoore@gmail.com" },
 ]
