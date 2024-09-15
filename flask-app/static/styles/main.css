@@ -24,11 +24,11 @@ text {
 }
 
 textarea {
-    font-size: x-large;
+    font-size: large;
     font-family: 'Times New Roman', Times, serif;
     background: lightgrey;
     width: 75vw;
-    height: 33vh;
+    height: 80vh;
     box-sizing: border-box;
     display: block;
 }

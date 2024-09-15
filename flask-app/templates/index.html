@@ -9,27 +9,26 @@
     </head>
 
     <body>
+
         <div class="header">
             <h1>MLotsawa</h1>
         </div>
         
+        <div class="text-box">
 
-        <div id="input-box" class="text-box">
             <form action="translate" method="post">
-                <textarea rows="12" cols="120" name="input">
-                {{ input }}
+
+                <textarea rows="12" cols="120" name="text">
+
+                {{ text }}
+                
                 </textarea>
+
                 <input type="submit" value="Translate" id="translate-button" class="translate-button">
+
             </form>
-        </div>
 
-        <div id="output-box" class="text-box">
-            <textarea rows="12" cols="120" name="input">
-            {{ translation }}
-            </textarea>
         </div>
-
-        
 
     </body>
 
