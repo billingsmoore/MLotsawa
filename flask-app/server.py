@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from utils.translate import translate
+from utils.log import update_logs
 from waitress import serve
 import webbrowser
 from threading import Timer
@@ -8,14 +9,15 @@ app = Flask(__name__, static_folder='static')
 
 @app.route('/')
 def index():
-    return render_template('index.html', input='Enter phonetic Tibetan here.', translation='Translation will appear here.')
+    return render_template('index.html', text='Enter Tibetan here.')
 
 
 @app.route('/translate', methods=["POST", "GET"])
 def serve_translation():
-    input = request.form['input']
+    input = request.form['text']
     translation = translate(input)
-    return render_template('index.html', input=input, translation=translation)
+    update_logs()
+    return render_template('index.html', text=translation)
 
 
 def open_browser():
