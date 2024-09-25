@@ -1,0 +1,7 @@
+accelerate
+flask
+pyinstaller
+thl-phonetic-transliteration
+transformers
+torch
+waitress

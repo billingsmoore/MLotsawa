@@ -6,3 +6,8 @@
 /notebooks/llama2/wandb
 /notebooks/size-selection/wandb
 /notebooks/final-model-training/wandb
+/.venv
+/flask-app/build
+/flask-app/dist
+/transliteration/data
+/transliteration/notebooks/wandb
