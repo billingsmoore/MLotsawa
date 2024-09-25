@@ -14,7 +14,7 @@ The optimizer used was [Adafactor](https://paperswithcode.com/method/adafactor).
 
 ## Learning Rate
 
-8 different learning rates were tested for 10,000 training steps. The learning rate that was selected for further training was 2e-5. The reason for this decision and the sources for the tested rates are explained below.
+8 different learning rates were tested for 10,000 training steps. The learning rate that was selected for further training was 3e-4. The reason for this decision and the sources for the tested rates are explained below.
 
 The T5 model card suggests a learning rate of either 1e-4 or 3e-4, higher than the default learning rate of the Transformers Trainer class, 5e-5. The Huggingface Translation tutorial uses a learning rate of 2e-5.
 
@@ -26,6 +26,6 @@ The results of these tests can be seen below.
 
 Learning rate substantially impacted the initial training loss of the model with smaller rates producing smaller initial loss. However, the best initial values also seemed to increase rather than decrease over time, potentially because they begin in a local minimum that they cannot escape. 
 
-Conversely, high learning rates have very poor initial losses, higher than the final loss from the last training epoch but decrease over time, suggesting they have careened out of the minimum discovered by previous training and are making their way back to it.
+Conversely, high learning rates have very poor initial losses, higher than the final loss from the last training epoch but decrease over time, suggesting they have careened out of the minimum discovered by previous training and are making their way back to it. 
 
-Ultimately, the lower training should be the deciding factor, and thus the 2e-5 learning rate, which was suggested by the Huggingface tutorial was chosen for final training.
+Ultimately, the 3e-4 learning rate was chosen for final training.
