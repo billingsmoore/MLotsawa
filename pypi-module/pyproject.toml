@@ -4,14 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 dependencies = [
-    "mlotsawa"
+    "transformers"
 ]
-name = "thl_phonetic_transliteration"
-version = "0.2.4"
+name = "mlotsawa"
+version = "0.0.1"
 authors = [
-  { name="billingsmoore", email="billingsmoore@gmail.com" },
+  { name="Jacob Moore", email="billingsmoore@gmail.com" },
 ]
-description = "The goal of this code is to provide a library to convert Tibetan unicode and Wylie transliterations to THL Simplified Phonetic Transliteration."
+description = "The purpose of this module is user-friendly translation and transliteration of Classical Tibetan."
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [

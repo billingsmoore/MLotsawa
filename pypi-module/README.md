@@ -1,9 +1,6 @@
-# thl_phonetic_transliteration
+# mlotsawa
 
 ## Description
-
-This project has been renamed [mlotsawa](https://pypi.org/project/mlotsawa/). The version here is deprecated. Please use [mlotsawa](https://pypi.org/project/mlotsawa/) instead.
-
 The goal of this code is to provide a library to convert Tibetan unicode and Wylie transliterations to THL Simplified Phonetic Transliteration.
 This project was inspired by the similar Perl module created by Roger Espel Llima and the pyewts module for converting between Tibetan unicode
 and Wylie transliterations.
@@ -14,19 +11,13 @@ including this package is [available on GitHub here.](https://github.com/billing
 ## Installation
 
 ```
-pip install thl-phonetic-transliteration
+pip install mlotsawa
 ```
 
 ## Examples
 
 ```python
-from thl_phonetic_transliteration.transliterator import Transliterator 
-
-tibetan_text = '<your Tibetan text>'
-
-transliterator = Transliterator()
-
-thl_phonetics = transliterator.convert(tibetan_text)
+#TBD
 ```
 ## License
 
