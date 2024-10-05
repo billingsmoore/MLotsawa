@@ -1,7 +1,7 @@
 from transformers import pipeline
 from  thl_phonetic_transliteration.transliterator import Transliterator
 
-model = 'billingsmoore/phonetic-tibetan-to-english-translation'
+model = 'billingsmoore/tibetan-to-english-translation'
 translator = pipeline('translation', model=model, device_map='auto')
 
 def translate(input):
