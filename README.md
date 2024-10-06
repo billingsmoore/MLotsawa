@@ -10,6 +10,11 @@ In general, if you acquired your computer after 2020, you should be fine. If you
 
 For any questions or feedback, please email me at billingsmoore [at] gmail [dot] com with 'MLotsawa' in the subject line.
 
+The code for the entire project is available in this repository, in [Notebooks](https://github.com/billingsmoore/MLotsawa/tree/main/Notebooks).
+Documentation on the process of training and testing models can be found in [Docs](https://github.com/billingsmoore/MLotsawa/tree/main/Docs).
+
+All models and datasets can be found on [Hugging Face](https://huggingface.co/billingsmoore)
+
 ## Getting Started
 
 Currently, the suggested way of using this project is through the PyPI module, [mlotsawa](https://pypi.org/project/mlotsawa/). Instructions can be found at that link.

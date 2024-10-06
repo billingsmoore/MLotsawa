@@ -1,4 +1,15 @@
-# Transliteration Model
+# Tibetan Phonetic Transliteration
+
+The purpose of this file is to document the process of creating the model ['billingsmoore/tibetan-phonetic-transliteration'](https://huggingface.co/billingsmoore/tibetan-phonetic-transliteration).
+
+The model card for that model including a more formal explanation of its creating process and instructions for usage can be found at the link above.
+
+## An Attempt at a Classical Approach
+
+Document of this section is not yet finished.
+[TODO]
+
+## Poor Beginnings
 
 The base model for transliteration is Google's T5-small architecture. It was finetuned for 32 epochs with a learning rate of 3e-4 on a dataset of 98,597 pairs of Tibetan script with its phonetic transliteration. This set was scraped and structured programmatically from [Lotsawa House](lotsawahouse.org).
 
@@ -14,9 +25,14 @@ To address this problem, the model was first retrained with a learning rate of 2
 
 The lower learning rate on its own did not resolve the problem of producing identical (incorrect) outputs for every input, nor did the altered approach to tokenization.
 
+## Solving Tokenizer Problems
+
 Further investigation found that the t5 tokenizer was not encoding the original Tibetan characters properly, even when those characters were encoded individually.
 
-To address this issue, Tibetan character were specifically added to the tokenizer, and the model was resized to accomadate the changed dimensionality of inputs. The adjusted base model was then trained for 5 epochs. The results of training with that tokenizer can be seen below.
+To address this issue, Tibetan character were specifically added to the tokenizer, and the model was resized to accomadate the changed dimensionality of inputs. 
+The code used for that process can be found in the associated notebook.
+
+The adjusted base model was then trained for 5 epochs. The results of training with that tokenizer can be seen below.
 
 ![Altered Tokenizer Results](../readme-assets/altered-tokenizer-results.png?raw=true "Graph of training results with the altered tokenizer")
 
