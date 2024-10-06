@@ -1,3 +1,4 @@
+from transformers import pipeline
 from flask import Flask, render_template, request
 from waitress import serve
 import webbrowser
@@ -8,16 +9,18 @@ from mlotsawa.translator import Translator
 
 class WebUI():
 
+    def __init__(self):
+
+        self.app = Flask(__name__, static_folder='static')
+
     def run(self):
 
-        app = Flask(__name__, static_folder='static')
-
-        @app.route('/')
+        @self.app.route('/')
         def index():
             return render_template('index.html', text='Enter Tibetan here.')
 
 
-        @app.route('/translate', methods=["POST", "GET"])
+        @self.app.route('/translate', methods=["POST", "GET"])
         def serve_translation():
             input = request.form['text']
             translation = self.translate(input)
@@ -28,9 +31,9 @@ class WebUI():
             webbrowser.open_new("http://127.0.0.1:5000")
 
         Timer(1, open_browser).start()
-        serve(app, host="0.0.0.0", port=5000, url_scheme='https')
+        serve(self.app, host="0.0.0.0", port=5000, url_scheme='https')
 
-    def translate(input):
+    def translate(self, input):
 
         # clean input for translation
         input = input.strip()
@@ -41,10 +44,11 @@ class WebUI():
                 input_lst.remove(elt)
             elt.replace('\r', '')
 
-        # transliterate text
+        # instantiate model classes
         transliterator = Transliterator()
         translator = Translator()
 
+        # transliterate text
         phonetic_lst = transliterator.transliterate(input_lst)
 
         # create translation

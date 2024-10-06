@@ -1,0 +1,40 @@
+h1 {
+    padding-left: 3%;
+    color: white;
+}
+
+body {
+    background: grey;
+}
+
+text {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.header {
+    background-color: black;
+    width: 24%;
+
+}
+
+.text-box {
+    position: relative;
+    display: block;
+    padding: 3%;
+}
+
+textarea {
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    background: lightgrey;
+    width: 75vw;
+    height: 80vh;
+    box-sizing: border-box;
+    display: block;
+}
+
+.translate-button {
+    background-color: lightgrey;
+    width: 15vw;
+    height: 5vh;
+}
