@@ -30,6 +30,5 @@ def translate(input):
         output_lst.append(combo+'\n')
 
     output = '\n'.join(output_lst)
-    print(output)
 
     return output
