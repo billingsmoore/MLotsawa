@@ -1,8 +1,5 @@
-from transformers import pipeline
-from  thl_phonetic_transliteration.transliterator import Transliterator
-
-model = 'billingsmoore/tibetan-to-english-translation'
-translator = pipeline('translation', model=model, device_map='auto')
+from  mlotsawa.transliterator import Transliterator
+from mlotsawa.translator import Translator
 
 def translate(input):
 
@@ -17,12 +14,12 @@ def translate(input):
 
     # transliterate text
     transliterator = Transliterator()
+    translator = Translator()
 
-    phonetic_lst = [transliterator.convert(elt) for elt in input_lst]
+    phonetic_lst = transliterator.transliterate(input_lst)
 
     # create translation
-    translation_lst = translator(phonetic_lst)
-    translation_lst = [elt['translation_text'] for elt in translation_lst]
+    translation_lst = translator.translate(input_lst)
 
     # prepare texts for display
     output_lst = []
