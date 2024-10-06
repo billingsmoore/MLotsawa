@@ -20,14 +20,19 @@ class Translator():
         if type(input_text) is str:
 
             #preprocess individual string
-            input_text = input_text.split('\n')
+            split_text = input_text.split('\n')
 
-            for elt in input_text:
+            for elt in split_text:
                 if elt=='\r':
-                    input_text.remove(elt)
+                    split_text.remove(elt)
                 elt.replace('\r', '')
 
-        translation = self.pipe(input_text)
+            translation = self.pipe(split_text)
+
+        else:
+
+            translation = self.pipe(input_text)
+
 
         translation = [elt['translation_text'] for elt in translation]
 

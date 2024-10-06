@@ -8,7 +8,7 @@ class Transliterator():
         self.pipe = pipeline('translation', 'billingsmoore/tibetan-phonetic-transliteration')
 
 
-    def convert(self, input_text):
+    def transliterate(self, input_text):
         """
         This function takes in a string and if it is in Tibetan unicode, the function transliterates it. 
         Otherwise, the function assumes the input was a mistake and returns it unaltered. Input and output may be either
@@ -21,10 +21,10 @@ class Transliterator():
             phonetic: a string or list of strings of transliterated text
         """
 
-        # if input is Tibetan unicode, use pyewts to convert it to Wylie
+        # if input is Tibetan unicode, transliterate it
         if self.is_tibetan_unicode(input_text):
             
-            transliteration = self.transliterate(input_text)
+            transliteration = self.convert(input_text)
 
             if type(input_text) is str and len(transliteration) == 1:
 
@@ -34,7 +34,7 @@ class Transliterator():
         
         # if input is already transliterated, return the input unchanged
         else:
-            
+
             return input_text
 
 
@@ -51,16 +51,20 @@ class Transliterator():
         """
         # Define the Tibetan Unicode range
         tibetan_range = range(0x0F00, 0x0FFF + 1)
+
+        if type(text) is not str:
+            text = text[0]
         
         # Check each character in the string
         for char in text:
             if ord(char) in tibetan_range:
                 return True
+            
         return False
 
-    def transliterate(self, input_text):
+    def convert(self, input_text):
         """
-        This is a helper function for convert. This function transliterates the inputted
+        This is a helper function for transliterate. This function transliterates the inputted
         Tibetan text.
 
         Args:
