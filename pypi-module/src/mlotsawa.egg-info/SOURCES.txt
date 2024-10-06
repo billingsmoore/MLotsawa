@@ -1,9 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-src/mlotsawa/__init__.py
-src/mlotsawa/script.py
-src/mlotsawa.egg-info/PKG-INFO
-src/mlotsawa.egg-info/SOURCES.txt
-src/mlotsawa.egg-info/dependency_links.txt
-src/mlotsawa.egg-info/top_level.txt
