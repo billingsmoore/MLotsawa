@@ -10,15 +10,15 @@ class Transliterator():
 
     def convert(self, input_text):
         """
-        This function takes in a string and if it is in Tibetan unicode, the function converts it to 
-        Wylie transliteration using pyewts. Otherwise, the function assumes that the inputted text is
-        already a Wylie transliteration and converts it to THL Simplified Phonetic Transliteration.
+        This function takes in a string and if it is in Tibetan unicode, the function transliterates it. 
+        Otherwise, the function assumes the input was a mistake and returns it unaltered. Input and output may be either
+        a single string or a list of strings but must always be of the same type.
 
         Args:
-            input_text: a string of either Tibetan unicode or a Wylie transliteration
+            input_text: a string  or a list of strings to be transliterated
 
         Returns
-            phonetic: a string of text which is the THL phonetic version of the input
+            phonetic: a string or list of strings of transliterated text
         """
 
         # if input is Tibetan unicode, use pyewts to convert it to Wylie
@@ -26,10 +26,15 @@ class Transliterator():
             
             transliteration = self.transliterate(input_text)
 
+            if type(input_text) is str and len(transliteration) == 1:
+
+                transliteration = transliteration[0]
+
             return transliteration
         
         # if input is already transliterated, return the input unchanged
         else:
+            
             return input_text
 
 
@@ -62,13 +67,11 @@ class Transliterator():
             input_text: a string of Tibetan unicode text
         
         Returns:
-            output_text: a string of transliterated text
+            output_text: a list of strings of transliterated text
         """
 
         output = self.pipe(input_text)
 
         output_text = [elt['translation_text'] for elt in output]
-
-        output_text = '\n'.join(output_text)
 
         return output_text
