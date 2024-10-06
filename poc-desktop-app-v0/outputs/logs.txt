@@ -1,7 +1,0 @@
-Running...
-English Tokenizer Loaded in 0.400 seconds
-Tibetan Tokenizer Loaded in 0.047 seconds
-Translation Model Loaded in 7.402 seconds
-Text Translated in 26.706 seconds
-Translation Saved to output.txt
-Done!
