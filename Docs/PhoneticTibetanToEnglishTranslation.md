@@ -4,6 +4,8 @@ The purpose of this file is to document the process of creating the model ['bill
 
 The full model card, including instructions for both primary usage and downstream usage can be found at the link above. However, this model has been superceded by the model ['billingsmoore/tibetan-to-english-translation'](https://huggingface.co/billingsmoore/tibetan-to-english-translation) and it is recommended that you use that model rather than this one.
 
+The section titles below can be clicked to see the associated Jupyter notebook.
+
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -140,15 +142,15 @@ The best results from each model are show in the table below. Note that the orig
 |  T5                     | ***the buddhas and bodhisattvas the dharma dharma and the supreme assembly***<br>***i take refuge in the bodhisattva bodhisattva***<br>***i offer to all my buddhas and bodhisattvas and so on***<br>***and grant us the buddhahood of all buddhas the attainment of buddhahood***
 | Llama 2                 | ***I pray to you, the supreme deity***<br>***I am a disciple of the great Vajradhara and I have been entrusted with the Dharma by my guru***<br>***I am a dak gi jin sok gyip snam kyi***<br>***I rejoice in the glorious deeds of my guru***
 
-### Keras Model
+### [Keras Model](/Notebooks/Models/PhoneticTibetanToEnglishTranslation/arch-selection/keras/proof-of-concept-modeling.ipynb)
 
  The proof of concept model was produced following using the architecture used in the Keras translation tutorial. This architecture is similar to that suggested by Phillip Koehn in 'Neural Machine Translation', his 2020 textbook on the subject. A full description of this model is below:
 
-![Keras Model Architecture](../readme-assets/keras-arch.png?raw=true "Keras Model Architecture")
+![Keras Model Architecture](readme-assets/phonetic/keras-arch.png?raw=true "Keras Model Architecture")
 
 Training this model produced the following results where 'Loss' is the Sparse Categorical Entropy loss function:
 
-![Keras Model Results](../readme-assets/keras-results.png?raw=true "Keras Model Results")
+![Keras Model Results](readme-assets/phonetic/keras-results.png?raw=true "Keras Model Results")
 
 Unfortunately, when tested on the 'Amitabha' text, it produces the following nonsense translation:
 
@@ -172,7 +174,7 @@ This is not ideal. However, 100,000 samples is an extremely small sample for tra
 
 This is still unacceptably poor, but is at least recognizably English. Thus, the proof-of-concept model has done its job.
 
-### No Language Left Behind
+### [No Language Left Behind](/Notebooks/Models/PhoneticTibetanToEnglishTranslation/arch-selection/nllb/nllb-finetuning.ipynb)
 
 #### Pretrained Translations
 
@@ -319,7 +321,7 @@ Below, I've translated the passage in Tibetan script line by line. Note that the
 
 There is clear improvement in this translation, but not enough to make this a viable model. Additionally, these results are not representative of actual performance because the larger dataset, again, poorly documented, almost certainly contains the exact text we are translating here. Thus, it seems necessary to look to a larger model.
 
-### T5
+### [T5](/Notebooks/Models/PhoneticTibetanToEnglishTranslation/arch-selection/t5/t5-small-finetuning.ipynb)
 
 According to the Hugging Face model card for the T5 model:
 
@@ -337,7 +339,7 @@ This model was finetuned using the 100,000 pair dataset for 30 epochs. This time
 
 The training loss is plotted below.
 
-![T5 Small Model Results](../readme-assets/t5-small-loss.png?raw=true "T5 Small Model Results")
+![T5 Small Model Results](readme-assets/phonetic/t5-small-loss.png?raw=true "T5 Small Model Results")
 
 You can see that loss drops substantially then levels off just before 20,000 training steps, which is just before reaching epoch 20.
 
@@ -400,7 +402,7 @@ Below are the translations after 10, 20, and 30 training epochs.
 
 Clearly, the quality of the results peaked at epoch 20. This translation does still leave something to be desired but is an extremely exciting result! With the small dataset of 100k samples, for only 20 training epochs, using the smallest model (!), T5 substantially outperforms the other models.
 
-### Llama 2
+### [Llama 2](/Notebooks/Models/PhoneticTibetanToEnglishTranslation/arch-selection/llama2/llama2-finetuning.ipynb)
 
 Llama 2 is a large language model developed by Facebook. It is the second Llama model that they have produced. The smallest size and the size used here is the 7B version, which has 7 billion trainable parameters, far, far more than the other models thus far tested. This places Llama 2 into a unique position. It is possible that the additional parameters will make it substantially more performant but it is certain that it will make training a much longer and more computationally expensive process. Additionally, the model is too large to be usable on many low or mid-tier commercial computers limiting its usefulness to many translators. As such, the bar is high for this to be the model that we proceed with.
 
@@ -408,9 +410,9 @@ To facilitate training such a large model, the QLoRA technique was used. [You ca
 
 Working with Llama (or any other LLM) also introduces an additional variable: prompt selection. The input to a model which is prepared to accept and follow instructions should include an instruction. What the exact format of that instruction should be is not obvious. I have tested two possibilities: 
 
-The "T5 prompt": "Translate from Tibetan to English: <Tibetan text> \n <English text> found here: https://huggingface.co/learn/nlp-course/chapter7/4?fw=pt
+The "T5 prompt": "Translate from Tibetan to English: \<Tibetan text\> \n \<English text\> [found here.](https://huggingface.co/learn/nlp-course/chapter7/4?fw=pt)
 
-The "Reddit prompt": "Tibetan: <Tibetan Text> English: <English text> found here: https://www.reddit.com/r/LocalLLaMA/comments/169ae0e/comment/jz1c51y/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+The "Reddit prompt": "Tibetan: \<Tibetan Text\> English: \<English text\>" [found here.](https://www.reddit.com/r/LocalLLaMA/comments/169ae0e/comment/jz1c51y/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
 
 The "Reddit prompt" asserts that this prompt was found to be the most effective for training LLM's for translation but I have not been able to find a citation for this claim thus far. A responder suggests the source to be [Yamada (2023)](https://arxiv.org/abs/2308.01391) but this is not correct. Yamada instead explores the use of larger contexts for translation tasks on models that already provide at least somewhat effective translation, which is not the case for us.
 
@@ -440,7 +442,7 @@ English:
 
 You can see in the chart below that it seems like training loss is substantially better using the "T5 prompt" than when using the "Reddit Prompt"
 
-![Llama Single Epoch Model Results](../readme-assets/llama-prompt-comparison.png?raw=true "Llama Single Epoch Model Results")
+![Llama Single Epoch Model Results](readme-assets/phonetic/llama-prompt-comparison.png?raw=true "Llama Single Epoch Model Results")
 
 However, as we will see below, this does not necessarily mean a better translation model.
 
@@ -477,7 +479,7 @@ This translation is somewhat better, although interestingly, the third line stil
 
 In the chart below, you can see that training loss continues to improve with additional training, but what we've seen so far should lead us to be skeptical of that as a meaningful metric.
 
-![Llama Three Epoch Model Results](../readme-assets/llama-3-epochs.png?raw=true "Llama Three Epoch Model Results")
+![Llama Three Epoch Model Results](readme-assets/phonetic/llama-3-epochs.png?raw=true "Llama Three Epoch Model Results")
 
 The model trained for additional epochs using the "Reddit prompt" produces the following translation:
 
@@ -495,7 +497,7 @@ Note that the Llama model was trained for far fewer epochs than the T5 model. Th
 
 The additional time taken to train the Llama model for additional epochs does not at this point seem justifiable.
 
-## Size Selection
+## [Size Selection](/Notebooks/Models/PhoneticTibetanToEnglishTranslation/size-selection/t5-sizes-finetuning.ipynb)
 
 ### Introduction
 
@@ -520,11 +522,11 @@ For this phase, a random sample of 1 million text pairs was selected from the fu
 Graphs results of training can be seen below:
 
 
-![Training Loss](../readme-assets/size-select-train-loss.png?raw=true "Training Loss")
+![Training Loss](readme-assets/phonetic/size-select-train-loss.png?raw=true "Training Loss")
 
-![Eval Loss](../readme-assets/size-select-eval-loss.png?raw=true "Eval Loss")
+![Eval Loss](readme-assets/phonetic/size-select-eval-loss.png?raw=true "Eval Loss")
 
-![Eval BLEU](../readme-assets/size-select-eval-bleu.png?raw=true "Eval BLEU")
+![Eval BLEU](readme-assets/phonetic/size-select-eval-bleu.png?raw=true "Eval BLEU")
 
 You can see that each model follows a similar trajectory over the course of training. As expected, the large models quantitatively outperform their smaller counterparts by a significant amount. 
 
@@ -563,7 +565,7 @@ For thoroughness, 5e-5 and 2e-2 were tested as extremes. Then, 3e-3 and 4e-4 wer
 
 The results of these tests can be seen below.
 
-![Learning Rate Loss](../readme-assets/lr-results.png?raw=true "Learning Rate Loss")
+![Learning Rate Loss](readme-assets/phonetic/lr-results.png?raw=true "Learning Rate Loss")
 
 Learning rate substantially impacted the initial training loss of the model with smaller rates producing smaller initial loss. However, the best initial values also seemed to increase rather than decrease over time, potentially because they begin in a local minimum that they cannot escape. 
 
@@ -571,7 +573,7 @@ Conversely, high learning rates have very poor initial losses, higher than the f
 
 Ultimately, the 3e-4 learning rate was chosen for final training.
 
-## Final Model Training
+## [Final Model Training](/Notebooks/Models/PhoneticTibetanToEnglishTranslation/final-phonetic-model-training/t5-finetuning.ipynb)
 
 The architecture that was used for model training was Google's T5. The size used was the 'Large' model with 770 million parameters. The original model can be found on Huggingface as google-t5/t5-large.
 
@@ -581,9 +583,9 @@ This model was trained for 6 epochs on a set of 1 million sentence pairs, with a
 
 The final BLEU score achieved was 83.4374. The full results of training can be seen below.
 
-![Loss](../readme-assets/final-losses.png?raw=true "Loss")
+![Loss](readme-assets/phonetic/final-losses.png?raw=true "Loss")
 
-![BLEU](../readme-assets/final-bleu.png?raw=true "BLEU")
+![BLEU](readme-assets/phonetic/final-bleu.png?raw=true "BLEU")
 
 
 
