@@ -4,10 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 dependencies = [
-    "transformers"
+  "flask",
+  "transformers",
+  "threading",
+  "waitress",
+  "webbrowser"
 ]
 name = "mlotsawa"
-version = "0.3.0"
+version = "0.4.2"
 authors = [
   { name="Jacob Moore", email="billingsmoore@gmail.com" },
 ]

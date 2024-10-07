@@ -7,6 +7,9 @@ The purpose of this module is user-friendly translation and transliteration of C
 Currently, separate classes are provided for translation and transliteration tasks. Both classes will accept either a list of strings,
 or a single string. The output of each will be of the same type as the input.
 
+You can also run the translator and transliteration functions through a web-based user interface. The web interface will open automatically
+when you use the code below.
+
 Under the hood, this module uses the T5 transformer architecture, custom fine-tuned on data
 from [Lotsawa House](www.lotsawahouse.org).
 
@@ -19,7 +22,7 @@ including this module is [available on GitHub here.](https://github.com/billings
 ## Installation
 
 ```
-pip install mlotsawa
+pip install --upgrade mlotsawa
 ```
 
 ## Examples
@@ -46,6 +49,16 @@ tibetan_text = '<your Tibetan text>' # may be in Tibetan script or phoneticized
 translator = Translator()
 
 translation = translator.translate(tibetan_text)
+```
+
+To server Web based user-interface:
+
+```python
+from mlotsawa.webui import WebUI
+
+webui = WebUI()
+
+webui.run()
 ```
 
 ## License
