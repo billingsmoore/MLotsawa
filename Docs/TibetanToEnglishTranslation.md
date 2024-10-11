@@ -10,15 +10,15 @@ I repeated that approach here.
 
 I began by testing the base T5-large model against my pretrained phonetic translation model. You can see the results of this training below.
 
-![Comparison Loss](../../readme-assets/script-comparison-loss.png?raw=true "Comparison Loss")
+![Comparison Loss](readme-assets/script/script-comparison-loss.png?raw=true "Comparison Loss")
 
 You can see that the pre-trained model does significantly out perform the base model. 
 
 From there, the pre-trained model was trained for an additional 6 epochs. You can see the graph of the final 3 epochs below.
 
 
-![Eval Loss](../../readme-assets/pre-trained-script-model-losses.png?raw=true "Eval Loss")
+![Eval Loss](readme-assets/script/pre-trained-script-model-losses.png?raw=true "Eval Loss")
 
-![Eval Bleu](../../readme-assets/script-model-bleu.png?raw=true "Eval Bleu")
+![Eval Bleu](readme-assets/script/script-model-bleu.png?raw=true "Eval Bleu")
 
-You can see that the final evaluation loss was [eval loss] and the final bleu score was [bleu score].
+YThe final bleu score was 59.3431.
