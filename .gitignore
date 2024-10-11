@@ -11,3 +11,5 @@
 /flask-app/dist
 /transliteration/data
 /transliteration/notebooks/wandb
+Notebooks/Models/DualTaskTibetanToEnglish/wandb
+Notebooks/Models/DualTaskTibetanToEnglish/dual-task-poc
