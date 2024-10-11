@@ -1,7 +1,0 @@
-accelerate
-flask
-mlotsawa
-pyinstaller
-transformers
-torch
-waitress
