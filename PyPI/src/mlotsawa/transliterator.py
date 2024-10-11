@@ -1,11 +1,14 @@
 from transformers import pipeline
+import torch
 
 class Transliterator():
 
     def __init__(self):
 
         # initialize a translation pipeline
-        self.pipe = pipeline('translation', 'billingsmoore/tibetan-phonetic-transliteration')
+        # Check if CUDA is available and set device accordingly
+        device = 0 if torch.cuda.is_available() else 'cpu'
+        self.pipe = pipeline('translation', 'billingsmoore/tibetan-phonetic-transliteration', device=device)
 
 
     def transliterate(self, input_text):

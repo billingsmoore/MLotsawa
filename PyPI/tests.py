@@ -93,3 +93,7 @@ def run_tests():
     test_webui()
 
 run_tests()
+
+time.sleep(3)
+webui = WebUI()
+webui.run(logging=True)
