@@ -8,7 +8,7 @@ Currently, separate classes are provided for translation and transliteration tas
 or a single string. The output of each will be of the same type as the input.
 
 You can also run the translator and transliteration functions through a web-based user interface. The web interface will open automatically
-when you use the code below.
+when you use the code below. You can use this to serve the app to others on your network, as well.
 
 Under the hood, this module uses the T5 transformer architecture, custom fine-tuned on data
 from [Lotsawa House](www.lotsawahouse.org).
@@ -51,7 +51,7 @@ translator = Translator()
 translation = translator.translate(tibetan_text)
 ```
 
-To server Web based user-interface:
+To serve the Web based user-interface:
 
 ```python
 from mlotsawa.webui import WebUI
@@ -59,6 +59,21 @@ from mlotsawa.webui import WebUI
 webui = WebUI()
 
 webui.run()
+```
+
+The WebUI.run() method has several optional parameters. These parameters and their default values are shown below.
+
+```python
+from mlotsawa.webui import WebUI
+
+webui = WebUI()
+
+webui.run(
+    logging=False, # keep log of when translations are done through your host
+    log_filepath='mlotsawa_logs.txt', # filepath and filename to be used for the log file (i.e. '/my_log_folder/my_logs.txt)
+    port=5000, # which port to run the webui from
+    autolaunch=True # automatically start the webapp in your default browser
+)
 ```
 
 ## License
