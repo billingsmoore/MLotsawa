@@ -12,7 +12,7 @@ dependencies = [
   "webbrowser"
 ]
 name = "mlotsawa"
-version = "0.4.2"
+version = "0.4.3"
 authors = [
   { name="Jacob Moore", email="billingsmoore@gmail.com" },
 ]
