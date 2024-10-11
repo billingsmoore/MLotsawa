@@ -20,7 +20,7 @@ All models and datasets can be found on [Hugging Face](https://huggingface.co/bi
 
 Currently, the suggested way of using this project is through the PyPI module, [mlotsawa](https://pypi.org/project/mlotsawa/). Instructions can be found at that link.
 
-If you are not comforable working with Python modules, a demo version can be downloaded to run as a desktop app. Be aware that this version is substantially behind the PyPI module. You can try the demo on your own computer by downloading it from the link below. 
+If you are not comfortable working with Python modules, a demo version can be downloaded to run as a desktop app. Be aware that this version is substantially behind the PyPI module. You can try the demo on your own computer by downloading it from the link below. 
 
 The demo currently expects input that has been transliterated into THL Simplified Phonetic Transliteration. It will accept input from unicode Tibetan Script or Wylie transliteration but, for now, performance is substantially worse. Right now, it also, in general, performs better on full lines or sentences than on single words.
 
