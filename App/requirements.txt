@@ -1,7 +1,7 @@
 accelerate
 flask
+mlotsawa
 pyinstaller
-thl-phonetic-transliteration
 transformers
 torch
 waitress
