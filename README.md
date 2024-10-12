@@ -14,7 +14,7 @@ The code for this project is available in in [Notebooks](https://github.com/bill
 
 Documentation on the process of training and testing models can be found in [Docs](https://github.com/billingsmoore/MLotsawa/tree/main/Docs).
 
-All models and datasets can be found on [Hugging Face](https://huggingface.co/billingsmoore)
+All models and datasets created and used by this project can be found on [Hugging Face](https://huggingface.co/billingsmoore)
 
 ## Getting Started
 
