@@ -1,4 +1,4 @@
-# Training the Tibetan Script Translation Model
+# Training the Tibetan Script Translation Model (Oct 1, 2024)
 
 To begin training the translation model to accept Tibetan script, my hope was that using the model that was pre-trained for phonetic translations
 would be more effective than training the base T5 model from scratch. My guess being that the pre-trained model would either learn to transliterate 

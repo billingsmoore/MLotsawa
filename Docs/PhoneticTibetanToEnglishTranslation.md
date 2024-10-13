@@ -1,4 +1,4 @@
-# Phonetic Tibetan to English Translation
+# Phonetic Tibetan to English Translation (August 17, 2024)
 
 The purpose of this file is to document the process of creating the model ['billingsmoore/phonetic-tibetan-to-english-translation'](https://huggingface.co/billingsmoore/phonetic-tibetan-to-english-translation).
 
