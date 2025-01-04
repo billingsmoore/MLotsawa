@@ -24,3 +24,5 @@ Notebooks/Models/withOPdata/wandb
 Notebooks/Models/BertTag/op-bert-classifier
 Notebooks/Models/BertTag/wandb
 Notebooks/Models/BertTag/op-bert-classifier-all-labels
+Notebooks/Models/ProofOfConcepts/RAT/rat-poc-*
+Notebooks/Models/ProofOfConcepts/RAT/wandb
