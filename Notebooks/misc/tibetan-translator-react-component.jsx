@@ -21,7 +21,7 @@ const TibetanTranslator = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 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'
+          'Authorization': 'Bearer INSERT_TOKEN_HERE'
         },
         body: JSON.stringify({ inputs: inputText }),
       });
