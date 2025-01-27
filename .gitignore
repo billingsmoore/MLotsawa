@@ -29,3 +29,6 @@ Notebooks/Models/BertTag/lg-col-op-bert-classifier
 Notebooks/Models/BertTag/en-lh-bert-classifier
 Notebooks/Datasets/OpenPecha/wip-ds
 Notebooks/Models/PhoneticTibetanToEnglishTranslation/arch-selection/llama2/wandb
+Notebooks/Models/ProofOfConcepts/RAT/rat-poc-*
+Notebooks/Models/ProofOfConcepts/RAT/wandb
+Docs/OpenPechaForumPosts/example-cc
