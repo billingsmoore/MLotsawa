@@ -16,6 +16,8 @@ Documentation on the process of training and testing models can be found in [Doc
 
 All models and datasets created and used by this project can be found on [Hugging Face](https://huggingface.co/billingsmoore)
 
+If you are interested in the research aspect of this project, I suggest reading [Validating Retrieval Augmented Translation With T5](Docs/OpenPechaForumPosts/Experiments/ValidatingRetrievalAugmentedTranslationWithT5.md) or [Knowledge Graphs for Accessible Machine Generated Translations and Commentaries](Docs/OpenPechaForumPosts/KnowledgeGraphs/KnowledgeGraphsforAccessibleMachineGeneratedTranslationsandCommentaries.md)
+
 ## Getting Started
 
 Currently, the suggested way of using this project is through the PyPI module, [mlotsawa](https://pypi.org/project/mlotsawa/). Instructions can be found at that link.
