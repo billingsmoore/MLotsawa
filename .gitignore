@@ -32,3 +32,9 @@ Notebooks/Models/PhoneticTibetanToEnglishTranslation/arch-selection/llama2/wandb
 Notebooks/Models/ProofOfConcepts/RAT/rat-poc-*
 Notebooks/Models/ProofOfConcepts/RAT/wandb
 Docs/OpenPechaForumPosts/example-cc
+Notebooks/Models/MoE/wandb
+Notebooks/Models/MoE/t5-small
+Notebooks/Models/MoE/moe-poc-ds
+Notebooks/Models/TriTask/thl-bo-en-tri-base-v0
+Notebooks/Models/TriTask/thl-bo-en-tri-s-v0
+Notebooks/Models/TriTask/wandb
