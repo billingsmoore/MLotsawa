@@ -1,5 +1,7 @@
 # User Data Modeling Suggestions
 
+*Jan 2025*
+
 This document is intended to summarize and respond to an ongoing discussion between myself, Jacob Moore[^1], and Tashi Dhondup regarding topic modeling of user translations.
 This document has been written in such a way as to be useful as a reference point for future discussion of this project and 
 may be useful for additional topic modeling in the future.
