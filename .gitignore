@@ -40,3 +40,8 @@ Notebooks/Models/TriTask/thl-bo-en-tri-s-v0
 Notebooks/Models/TriTask/wandb
 Notebooks/Datasets/TED2020/bo-en.txt
 Notebooks/Datasets/Tatoeba/bo-en.txt
+Notebooks/Datasets/GNOME/bo-en.txt
+Notebooks/Datasets/NLLB/bo-en.txt
+Notebooks/Datasets/84000/84000-bo-en
+Notebooks/Datasets/84000/84000-cc-wip
+Notebooks/Datasets/NLLB/nllb-cc-wip
