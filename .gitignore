@@ -48,3 +48,5 @@ Notebooks/Datasets/NLLB/nllb-cc-wip
 Notebooks/Datasets/Hopkins/jh_dict_unicode.xls
 *checkpoint*
 *wandb*
+*ds
+*tokenizer
