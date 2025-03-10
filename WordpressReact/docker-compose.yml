@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: user
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./wordpress/wp-content:/var/www/html/wp-content
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+
+  react:
+    build: ./react-app
+    container_name: react
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./react-app:/app
+      - /app/node_modules
+
+volumes:
+  db_data:
