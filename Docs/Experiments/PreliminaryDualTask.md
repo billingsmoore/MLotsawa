@@ -17,9 +17,9 @@ The model tokenizer was extended to allow for Tibetan script. Then, the dataset 
 
 Graphs of training results can be seen below.
 
-![Losses](readme-assets/dual-task/dual-task-loss.png?raw=true "Graph of losses")
+![Losses](assets/dual-task/dual-task-loss.png?raw=true "Graph of losses")
 
-![BLEU](readme-assets/dual-task/dual-task-bleu.png?raw=true "Graph of BLEU scores")
+![BLEU](assets/dual-task/dual-task-bleu.png?raw=true "Graph of BLEU scores")
 
 Note that the model was evaluated on the combined test set of both translation and transliteration pairs and thus, results may not be reliably indicative of translation quality, only that quality continued to improve on the combined tasks over the course of training.
 

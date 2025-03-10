@@ -31,7 +31,7 @@ This dataset was concatenated and cleaned (including de-duplication) using [the 
 
 ### Source Distribution
 
-![Source Distribution](readme-assets/aggregated-data/source-distribution.png)
+![Source Distribution](assets/aggregated-data/source-distribution.png)
 
 ## [84000](https://huggingface.co/datasets/billingsmoore/84000-bo-en)
 
@@ -45,7 +45,7 @@ The dataset was re-formatted for Hugging Face using [the code found here](https:
 
 The distribution of the data and its topic labels can be seen below.
 
-![84000-topics](readme-assets/aggregated-data/84000-topics.png)
+![84000-topics](assets/aggregated-data/84000-topics.png)
 
 
 ## [GNOME]()
@@ -64,7 +64,7 @@ The topic labels were generated with [easy_text_clustering](https://pypi.org/pro
 
 Note that smaller datasets have less informative topic labels because clustering becomes less reliable with sparser data.
 
-![GNOME-topics](readme-assets/aggregated-data/GNOME-topics.png)
+![GNOME-topics](assets/aggregated-data/GNOME-topics.png)
 
 
 ## [Hopkins](https://huggingface.co/datasets/billingsmoore/Hopkins-bo-en)
@@ -77,7 +77,7 @@ The topic labels were generated with [easy_text_clustering](https://pypi.org/pro
 
 Note that smaller datasets have less informative topic labels because clustering becomes less reliable with sparser data.
 
-![Hopkins-topics](readme-assets/aggregated-data/Hopkins-topics.png)
+![Hopkins-topics](assets/aggregated-data/Hopkins-topics.png)
 
 ## [Lotsawa House](https://huggingface.co/datasets/billingsmoore/LotsawaHouse-bo-en)
 
@@ -106,7 +106,7 @@ and also acknowledge OPUS for the service provided here by citing Jörg Tiedeman
 
 The topic labels were generated with [easy_text_clustering](https://pypi.org/project/easy-text-clustering/) using [the code found here](https://github.com/billingsmoore/MLotsawa/blob/main/Notebooks/Datasets/NLLB/TopicLabeling.ipynb) and can be seen below.
 
-![NLLB-topics](readme-assets/aggregated-data/NLLB-topics.png)
+![NLLB-topics](assets/aggregated-data/NLLB-topics.png)
 
 
 ## [Tatoeba](https://huggingface.co/datasets/billingsmoore/Tatoeba-bo-en)
@@ -126,7 +126,7 @@ This data was reformatted for Hugging Face from the moses format using [the code
 
 Note that smaller datasets have less informative topic labels because clustering becomes less reliable with sparser data, and this dataset is especially small.
 
-![Tatoeba-topics](readme-assets/aggregated-data/Tatoeba-topics.png)
+![Tatoeba-topics](assets/aggregated-data/Tatoeba-topics.png)
 
 
 ## [TED2020]
@@ -143,4 +143,4 @@ The topic labels were generated with [easy_text_clustering](https://pypi.org/pro
 
 Note that smaller datasets have less informative topic labels because clustering becomes less reliable with sparser data.
 
-![TED2020-topics](readme-assets/aggregated-data/TED2020-topics.png)
+![TED2020-topics](assets/aggregated-data/TED2020-topics.png)

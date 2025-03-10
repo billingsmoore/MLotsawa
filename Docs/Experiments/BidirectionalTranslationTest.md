@@ -12,9 +12,9 @@ To investigate the effects of bidirectional training the [T5-small model](https:
 
 The first training was done in unidirectionally, Tibetan to English only. The second was done bidirectionally, both Tibetan to English and English to Tibetan. Both were trained for 3 epochs and evaluated by Loss and BLEU score. Both models were evaluated only on the unidirectional Tibetan to English data. Graphs of training results are can be seen below.
 
-![Losses](readme-assets/bidirectional/bidirectional-losses.png?raw=true "Graph of losses")
+![Losses](assets/bidirectional/bidirectional-losses.png?raw=true "Graph of losses")
 
-![BLEU](readme-assets/bidirectional/bidirectional-bleu.png?raw=true "Graph of BLEU scores")
+![BLEU](assets/bidirectional/bidirectional-bleu.png?raw=true "Graph of BLEU scores")
 
 Note that while both models were trained for 3 epochs, the bidirectional dataset was larger, and thus the bidirectional run consists of significantly more training steps (the horizontal axis of the above graphs).
 

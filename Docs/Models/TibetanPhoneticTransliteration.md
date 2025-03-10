@@ -23,13 +23,13 @@ The base model for transliteration is Google's T5-small architecture. It was fin
 
 The final evaluation loss during training was 1.01475. The graph of training results can be seen below.
 
-![Training Results](readme-assets/transliteration/transliteration-training-results.png?raw=true "Graph of training results")
+![Training Results](assets/transliteration/transliteration-training-results.png?raw=true "Graph of training results")
 
 However, this model, even after just a single epoch, outputs the same sequence for every input. This may be a result of any overly high learning rate or of problems in tokenizing the Tibetan unicode.
 
 To address this problem, the model was first retrained with a learning rate of 2e-5. Then, the model was trained with input and output texts tokenized at the character level. The results of the first five epochs of training for each experiment can be seen below. Note that, initially, the loss curves are roughly identical for both approaches when learning rates are the same. However, the single character tokenizations level off more quickly and final evaluation losses are worse.
 
-![Transliteration Experiment Results](readme-assets/transliteration/transliteration-experiments.png?raw=true "Graph of training results")
+![Transliteration Experiment Results](assets/transliteration/transliteration-experiments.png?raw=true "Graph of training results")
 
 The lower learning rate on its own did not resolve the problem of producing identical (incorrect) outputs for every input, nor did the altered approach to tokenization.
 
@@ -42,6 +42,6 @@ The code used for that process can be found in the associated notebook.
 
 The adjusted base model was then trained for 5 epochs. The results of training with that tokenizer can be seen below.
 
-![Altered Tokenizer Results](readme-assets/transliteration/altered-tokenizer-results.png?raw=true "Graph of training results with the altered tokenizer")
+![Altered Tokenizer Results](assets/transliteration/altered-tokenizer-results.png?raw=true "Graph of training results with the altered tokenizer")
 
 Outputs from this model are of acceptably high quality.

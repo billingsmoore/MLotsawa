@@ -146,11 +146,11 @@ The best results from each model are show in the table below. Note that the orig
 
  The proof of concept model was produced following using the architecture used in the Keras translation tutorial. This architecture is similar to that suggested by Phillip Koehn in 'Neural Machine Translation', his 2020 textbook on the subject. A full description of this model is below:
 
-![Keras Model Architecture](readme-assets/phonetic/keras-arch.png?raw=true "Keras Model Architecture")
+![Keras Model Architecture](assets/phonetic/keras-arch.png?raw=true "Keras Model Architecture")
 
 Training this model produced the following results where 'Loss' is the Sparse Categorical Entropy loss function:
 
-![Keras Model Results](readme-assets/phonetic/keras-results.png?raw=true "Keras Model Results")
+![Keras Model Results](assets/phonetic/keras-results.png?raw=true "Keras Model Results")
 
 Unfortunately, when tested on the 'Amitabha' text, it produces the following nonsense translation:
 
@@ -339,7 +339,7 @@ This model was finetuned using the 100,000 pair dataset for 30 epochs. This time
 
 The training loss is plotted below.
 
-![T5 Small Model Results](readme-assets/phonetic/t5-small-loss.png?raw=true "T5 Small Model Results")
+![T5 Small Model Results](assets/phonetic/t5-small-loss.png?raw=true "T5 Small Model Results")
 
 You can see that loss drops substantially then levels off just before 20,000 training steps, which is just before reaching epoch 20.
 
@@ -442,7 +442,7 @@ English:
 
 You can see in the chart below that it seems like training loss is substantially better using the "T5 prompt" than when using the "Reddit Prompt"
 
-![Llama Single Epoch Model Results](readme-assets/phonetic/llama-prompt-comparison.png?raw=true "Llama Single Epoch Model Results")
+![Llama Single Epoch Model Results](assets/phonetic/llama-prompt-comparison.png?raw=true "Llama Single Epoch Model Results")
 
 However, as we will see below, this does not necessarily mean a better translation model.
 
@@ -479,7 +479,7 @@ This translation is somewhat better, although interestingly, the third line stil
 
 In the chart below, you can see that training loss continues to improve with additional training, but what we've seen so far should lead us to be skeptical of that as a meaningful metric.
 
-![Llama Three Epoch Model Results](readme-assets/phonetic/llama-3-epochs.png?raw=true "Llama Three Epoch Model Results")
+![Llama Three Epoch Model Results](assets/phonetic/llama-3-epochs.png?raw=true "Llama Three Epoch Model Results")
 
 The model trained for additional epochs using the "Reddit prompt" produces the following translation:
 
@@ -522,11 +522,11 @@ For this phase, a random sample of 1 million text pairs was selected from the fu
 Graphs results of training can be seen below:
 
 
-![Training Loss](readme-assets/phonetic/size-select-train-loss.png?raw=true "Training Loss")
+![Training Loss](assets/phonetic/size-select-train-loss.png?raw=true "Training Loss")
 
-![Eval Loss](readme-assets/phonetic/size-select-eval-loss.png?raw=true "Eval Loss")
+![Eval Loss](assets/phonetic/size-select-eval-loss.png?raw=true "Eval Loss")
 
-![Eval BLEU](readme-assets/phonetic/size-select-eval-bleu.png?raw=true "Eval BLEU")
+![Eval BLEU](assets/phonetic/size-select-eval-bleu.png?raw=true "Eval BLEU")
 
 You can see that each model follows a similar trajectory over the course of training. As expected, the large models quantitatively outperform their smaller counterparts by a significant amount. 
 
@@ -565,7 +565,7 @@ For thoroughness, 5e-5 and 2e-2 were tested as extremes. Then, 3e-3 and 4e-4 wer
 
 The results of these tests can be seen below.
 
-![Learning Rate Loss](readme-assets/phonetic/lr-results.png?raw=true "Learning Rate Loss")
+![Learning Rate Loss](assets/phonetic/lr-results.png?raw=true "Learning Rate Loss")
 
 Learning rate substantially impacted the initial training loss of the model with smaller rates producing smaller initial loss. However, the best initial values also seemed to increase rather than decrease over time, potentially because they begin in a local minimum that they cannot escape. 
 
@@ -583,9 +583,9 @@ This model was trained for 6 epochs on a set of 1 million sentence pairs, with a
 
 The final BLEU score achieved was 83.4374. The full results of training can be seen below.
 
-![Loss](readme-assets/phonetic/final-losses.png?raw=true "Loss")
+![Loss](assets/phonetic/final-losses.png?raw=true "Loss")
 
-![BLEU](readme-assets/phonetic/final-bleu.png?raw=true "BLEU")
+![BLEU](assets/phonetic/final-bleu.png?raw=true "BLEU")
 
 
 
