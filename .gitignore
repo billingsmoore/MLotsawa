@@ -52,3 +52,12 @@ Notebooks/Datasets/Hopkins/jh_dict_unicode.xls
 *tokenizer
 Notebooks/Experiments/Llama/qlora-llama3.2-1b
 Notebooks/Datasets/Montano/ratnavali.xlsx
+Notebooks/Experiments/AutomaticPostEditing/baseline-model
+Notebooks/Experiments/AutomaticPostEditing/dual-model
+Notebooks/Experiments/AutomaticPostEditing/post-edit-model
+Notebooks/Models/TibetanToSpanishTranslation/poc-model
+Notebooks/Models/TibetanToSpanishTranslation/long-sequences
+Notebooks/Models/TibetanToSpanishTranslation/finetuned-model
+Notebooks/Models/TibetanToSpanishTranslation/es-pretrained-model
+Notebooks/Models/TibetanToSpanishTranslation/es-continue-pretrain
+Notebooks/Models/TibetanToSpanishTranslation/better-poc-model
