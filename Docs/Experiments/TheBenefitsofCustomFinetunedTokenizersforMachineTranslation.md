@@ -74,10 +74,10 @@ In Experiment 1, the tokenizer to which all Tibetan characters were added indivi
 
 The training results of Experiment 2 are shown in the graphs below. The model trained using the custom finetuned tokenizer ("custom-finetuned") significantly outperforms the model using the tokenizer to which the Tibetan characters have been added individually ("just-add") in both BLEU (Figure 1) and chrF (Figure 2).
 
-![Bleu Results](custom-tokenizer-bleu.png)
+![Bleu Results](assets/custom-tokenizer-bleu.png)
 *Figure 1: BLEU Scores*
 
-![chrF Results](custom-tokenizer-chrf.png)
+![chrF Results](assets/custom-tokenizer-chrf.png)
 *Figure 2: chrF Scores*
 
 ## Discussion
