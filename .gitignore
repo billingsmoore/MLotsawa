@@ -61,3 +61,4 @@ Notebooks/Models/TibetanToSpanishTranslation/finetuned-model
 Notebooks/Models/TibetanToSpanishTranslation/es-pretrained-model
 Notebooks/Models/TibetanToSpanishTranslation/es-continue-pretrain
 Notebooks/Models/TibetanToSpanishTranslation/better-poc-model
+Notebooks/Models/TibetanToEnglishTranslationv2/pretrained-model
