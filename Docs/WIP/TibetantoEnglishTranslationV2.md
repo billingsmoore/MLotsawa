@@ -1,5 +1,36 @@
 # Tibetan to English Translation v2
 
+## Notes to self
+
+initial training with full dataset gave unsatisfactory results, training data was thus restricted to Buddhist material
+
+test runs with gradient clipping and label smoothing seemed to diminsh performance so finetuning was started without them
+
+finetuning with a longer max epoch size accidentally produces slower decay in the optimizer, which improved performance significantly
+
+finetuning of the small model crashed after 36 epochs. Performance was still improving but only very slowly. 
+
+finetuning is being continued with adafactor adjusted to have a more aggressive learning rate decay strategy from 
+
+>optimizer = Adafactor(
+    model.parameters(), 
+    scale_parameter=True, 
+    relative_step=False, 
+    warmup_init=False, 
+    lr=3e-4
+)
+
+to:
+
+>optimizer = Adafactor(
+    model.parameters(),
+    scale_parameter=True,
+    relative_step=True,
+    warmup_init=True,
+    lr=3e-4
+)
+
+
 ## Custom Tokenizer
 
 From **The Benefits of Custom Finetuned Tokenizers for Machine Translation**:
