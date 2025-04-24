@@ -8,7 +8,11 @@ test runs with gradient clipping and label smoothing seemed to diminsh performan
 
 finetuning with a longer max epoch size accidentally produces slower decay in the optimizer, which improved performance significantly
 
-finetuning of the small model crashed after 36 epochs, and restarted
+finetuning of the small model crashed after 36 epochs, and restarted until 50 epochs
+
+pretrained small with adam, others with adafactor
+
+base finetuned with constant learning rate
 
 ## Custom Tokenizer
 
