@@ -1,5 +1,19 @@
 # Tibetan to English Translation v2
 
+## Notes to self
+
+initial training with full dataset gave unsatisfactory results, training data was thus restricted to Buddhist material
+
+test runs with gradient clipping and label smoothing seemed to diminsh performance so finetuning was started without them
+
+finetuning with a longer max epoch size accidentally produces slower decay in the optimizer, which improved performance significantly
+
+finetuning of the small model crashed after 36 epochs, and restarted until 50 epochs
+
+pretrained small with adam, others with adafactor
+
+base finetuned with constant learning rate
+
 ## Custom Tokenizer
 
 From **The Benefits of Custom Finetuned Tokenizers for Machine Translation**:
