@@ -1,0 +1,17 @@
+ESTABLISH BASELINE
+first train mixed model
+
+second train amdo only model
+show that dialect specific model works better
+
+
+REPRODUCE OLD PROBLEM
+attempt to finetune amdo model with added dialects from mixed training data
+show that this deteriorates performance
+
+attempt to finetune amdo model with all mixed data
+show that this preserves performance
+
+DEMONSTRATE LORA BENEFITS
+finetune amdo lora for baseline model 
+show improvements without loss of baseline performance
