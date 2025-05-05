@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+mlotsawa.egg-info/PKG-INFO
+mlotsawa.egg-info/SOURCES.txt
+mlotsawa.egg-info/dependency_links.txt
+mlotsawa.egg-info/requires.txt
+mlotsawa.egg-info/top_level.txt
