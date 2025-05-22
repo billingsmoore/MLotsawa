@@ -14,6 +14,8 @@ pretrained small with adam, others with adafactor
 
 base finetuned with constant learning rate
 
+base crashed at 27 epochs then resumed
+
 ## Custom Tokenizer
 
 From **The Benefits of Custom Finetuned Tokenizers for Machine Translation**:
