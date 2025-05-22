@@ -6,7 +6,7 @@ class Translator():
     def __init__(self):
         
         device = 0 if torch.cuda.is_available() else 'cpu'
-        self.pipe = pipeline('translation', model='billingsmoore/tibetan-to-english-translation', device_map=device)
+        self.pipe = pipeline('translation', model='billingsmoore/mlotsawa-ground-small', device_map=device)
 
     def translate(self, input_text):
         """

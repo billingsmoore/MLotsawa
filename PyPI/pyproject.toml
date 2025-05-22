@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools==68.2.2", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 dependencies = [
@@ -12,7 +12,7 @@ dependencies = [
   "webbrowser"
 ]
 name = "mlotsawa"
-version = "0.4.3"
+version = "1.0.0"
 authors = [
   { name="Jacob Moore", email="billingsmoore@gmail.com" },
 ]
@@ -24,6 +24,9 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+[tool.hatch.build]
+include = ["src/**", "README.md", "LICENSE"]
 
 [project.urls]
 Homepage = "https://github.com/billingsmoore/MLotsawa"
