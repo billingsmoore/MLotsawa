@@ -10,7 +10,7 @@ In general, if you acquired your computer after 2020, you should be fine. If you
 
 For any questions or feedback, please email me at billingsmoore [at] gmail [dot] com with 'MLotsawa' in the subject line.
 
-The code for this project is available in in [Notebooks](https://github.com/billingsmoore/MLotsawa/tree/main/Notebooks).
+The code for this project is available in [Notebooks](https://github.com/billingsmoore/MLotsawa/tree/main/Notebooks).
 
 Documentation on the process of training and testing models can be found in [Docs](https://github.com/billingsmoore/MLotsawa/tree/main/Docs).
 
