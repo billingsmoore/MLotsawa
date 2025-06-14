@@ -64,3 +64,4 @@ Notebooks/Models/TibetanToSpanishTranslation/better-poc-model
 Notebooks/Models/TibetanToEnglishTranslationv2/pretrained-model
 *-model
 Notebooks/Experiments/ASRDialectLoRA/TrainingNotebooks/Models
+Notebooks/Models/TibetanToEnglishTranslation/TibetanToEnglishTranslationv2/BuddhistOnly/Pretraining/Large/chkpts
