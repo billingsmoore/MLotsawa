@@ -44,5 +44,7 @@ You can see above that the post-editing model improves substantially on the base
 ## Citations
 
 [1]Automatic Post-Editing of Machine Translation: A Neural Programmer-Interpreter Approach (Vu & Haffari, EMNLP 2018)
+
 [2]Do Carmo, Félix, et al. "A review of the state-of-the-art in automatic post-editing." Machine Translation 35 (2021): 101-143.
+
 [3]Ki, Dayeon, and Marine Carpuat. "Guiding large language models to post-edit machine translation with error annotations." arXiv preprint arXiv:2404.07851 (2024).
