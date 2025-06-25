@@ -1,8 +1,0 @@
-{
-  "average_bleu": 15.613342229974464,
-  "average_chrf": 39.000804777171204,
-  "average_ter": 77.37349197047068,
-  "batch_size": 500,
-  "num_batches": 200,
-  "num_examples": 100000
-}
