@@ -10,6 +10,9 @@ The pipeline suggested in this post is based on current standard approaches in c
 
 This post is intended more as a conversation starter than as a blueprint or design document. It is my hope that the pipeline below can be further fleshed out, improved, and ultimately implemented by this community.
 
+
+![pipeline diagram](pipeline-diagram.png)
+
 ## Skeletal Overview of Query Processing Pipeline
 
 1. **Classifier Agent (Gateway)**
@@ -73,13 +76,3 @@ This post is intended more as a conversation starter than as a blueprint or desi
    - *Output Features*:
      - Proper sourcing attribution when applicable
      - Appropriate disclaimer for controversial topics
-
-## Diagrams to be made
-
-over all diagram
-
-domain expert/sub-domain expert rag diagram
-
-constitutional ai diagram
-
-MCP diagram?
