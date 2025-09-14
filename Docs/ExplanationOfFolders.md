@@ -1,0 +1,1 @@
+in notebooks/experiments PreGround is all of the experiments run prior to the formal mlotsawa-ground model training and ablation study
