@@ -1,0 +1,2 @@
+Gemini model is Gemini 2.5 Flash with prompt: "Translate Tibetan to English:"
+Claude model is Claude Sonnet 4 with prompt: "Translate Tibetan to English with no additional output:"
