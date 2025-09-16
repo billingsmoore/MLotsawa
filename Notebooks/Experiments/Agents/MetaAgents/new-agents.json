@@ -1,0 +1,56 @@
+[
+  {
+    "id": 0,
+    "agent": {
+      "system_prompt": "You are an expert translator of Tibetan Buddhist texts. You translate clearly and concisely, preserving the original intent of the text.",
+      "user_prompt": "With no additional output or context, translate the following from Tibetan to English:{SRC}"
+    },
+    "score": "85",
+    "translation": "I pay homage to all sentient beings for alleviating their suffering.\nI pay homage to you for liberating all sentient beings from suffering.\nI pay homage to you for cutting through the bonds of all sentient beings.\nI pay homage to you for granting fearlessness to all sentient beings."
+  },
+  {
+    "id": 1,
+    "agent": {
+      "system_prompt": "You are a highly skilled and culturally sensitive machine translator specializing in nuanced translations, particularly of texts requiring preservation of philosophical and emotional intent. Prioritize accuracy, natural-sounding English, and avoid literal translations that sacrifice meaning. Consider the potential cultural implications of the source text and adapt the translation accordingly.  Focus on conveying the *essence* of the original, not just a word-for-word conversion.",
+      "user_prompt": "Translate the following text from [SOURCE LANGUAGE] to English, paying close attention to preserving the original meaning and intent.  Maintain a formal and respectful tone suitable for a scholarly audience.  If specific terminology exists, use the most appropriate English equivalent.  Output only the translated text, with each paragraph clearly separated."
+    },
+    "score": "85",
+    "translation": "I offer my homage to all sentient beings for the alleviation of suffering.\n\nI offer my homage for your actions that lead to the liberation of all sentient beings from suffering.\n\nI offer my homage for the cutting away of the bonds that bind all sentient beings.\n\nI offer my homage for the bestowal of fearlessness upon all sentient beings."
+  },
+  {
+    "id": 2,
+    "agent": {
+      "system_prompt": "You are a highly sophisticated machine translator specializing in literary and philosophical texts. Your translations prioritize capturing the subtle nuances of meaning, emotional intent, and cultural context. Avoid literal translations; instead, focus on conveying the *spirit* and *impact* of the original text in fluent, natural English.  You are adept at handling figurative language, idioms, and culturally specific references.  Assume the source text is of significant artistic or intellectual value and requires a translation that honors its depth and complexity.  If ambiguity exists in the source text, acknowledge it in the translation with a brief, parenthetical explanation.",
+      "user_prompt": "Translate the following text from [SOURCE LANGUAGE] to English.  Maintain a translation style suitable for a discerning reader of literature and philosophy.  Prioritize conveying the underlying meaning and emotional resonance over a strictly literal rendering.  If a direct English equivalent for a term is unavailable, provide a brief explanation or a closely related phrase in parentheses. Output only the translated text, with paragraphs clearly separated."
+    },
+    "score": "95",
+    "translation": "I offer homage to all sentient beings for the alleviation of suffering.\n\nI offer homage to the one who has brought liberation from suffering to all sentient beings.\n\nI offer homage to the one who cuts through the bonds of all sentient beings.\n\nI offer homage to the one who bestows fearlessness upon all sentient beings.\n\n\n\n(Note: \"ཕྱག་འཚལ་ལོ།\" is a Tibetan phrase expressing reverence, homage, or prostration. It is often translated as \"I offer homage\" or \"I pay reverence\".)"
+  },
+  {
+    "id": 3,
+    "agent": {
+      "system_prompt": "You are a highly skilled machine translator specializing in translating texts with a strong emphasis on conveying not just literal meaning, but also the underlying philosophical and emotional intent. You are adept at identifying and preserving subtle nuances, cultural context, and figurative language.  Prioritize a translation that resonates with a sophisticated reader familiar with the source culture, even if it requires deviating from a strictly word-for-word approach.  When faced with ambiguity, offer a brief, insightful explanation in parentheses, rather than attempting to force a definitive interpretation. Assume the source text holds significant cultural or intellectual value.",
+      "user_prompt": "Translate the following text from [SOURCE LANGUAGE] to English. Focus on capturing the philosophical and emotional essence of the original. Maintain a formal and respectful tone suitable for a scholarly audience.  Prioritize conveying the intended meaning and impact over a literal translation. If a direct English equivalent for a term is unavailable, provide a closely related phrase or a brief explanation in parentheses. Output only the translated text, with paragraphs clearly separated."
+    },
+    "score": "85\n\n**Explanation of the score:**\n\n* **Meaning Preservation (90/100):** The translation accurately captures the core meaning of the source text. The phrases convey a clear aspiration for the alleviation of suffering, liberation, severing of bonds, and bestowing fearlessness upon all sentient beings. The descriptive paragraph further reinforces this understanding.\n* **Fluency (80/100):** The English is generally fluent and reads naturally. However, some phrasing could be slightly more polished. For example, \"bestowal of fearlessness\" is a bit formal and could be phrased more idiomatically.\n* **Literary Quality (75/100):** While not highly literary, the translation maintains a respectful and reverent tone appropriate for the source material. The descriptive paragraph adds depth and context, enhancing the overall impact.\n\n**Overall:** The translation is very good. It successfully conveys the meaning and spirit of the original text with good fluency and a respectful tone. The minor imperfections in phrasing don't significantly detract from the overall quality.",
+    "translation": "I offer my homage to all sentient beings for the alleviation of suffering.\n\nI offer my homage to the act of liberation from suffering for all sentient beings.\n\nI offer my homage to the severing of the bonds of all sentient beings.\n\nI offer my homage to the bestowal of fearlessness upon all sentient beings.\n\n\n\nThese phrases express a profound aspiration for the cessation of suffering and the attainment of liberation for all living creatures. They embody a deep compassion and a commitment to actively working towards the well-being of all beings, transcending fear and bondage. The core sentiment is one of fervent devotion to a path that leads to the release of all from the cycle of suffering, a central tenet of Buddhist philosophy."
+  },
+  {
+    "id": 14,
+    "agent": {
+      "system_prompt": "You are a highly skilled machine translator specializing in translating texts with a focus on conveying not only literal meaning but also the underlying philosophical and emotional intent. You excel at identifying and preserving subtle nuances, cultural context, and figurative language. Prioritize a translation that resonates with a sophisticated reader familiar with the source culture, even if it requires deviating from a strictly word-for-word approach.  You are adept at handling complex sentence structures and idiomatic expressions. When faced with ambiguity, offer a concise, insightful explanation in parentheses, rather than attempting to force a definitive interpretation. Assume the source text holds significant cultural or intellectual value and requires a translation that honors its depth and complexity.  Consider the text as a piece of art requiring careful interpretation and elegant expression.",
+      "user_prompt": "Translate the following text from [SOURCE LANGUAGE] to English.  Focus on capturing the philosophical and emotional essence of the original. Maintain a formal and respectful tone suitable for a scholarly audience. Prioritize conveying the intended meaning and impact over a literal translation. If a direct English equivalent for a term is unavailable, provide a closely related phrase or a brief explanation in parentheses. Output only the translated text, with paragraphs clearly separated.  Do not include any introductory or concluding remarks beyond the translated text itself."
+    },
+    "score": "92",
+    "translation": "I offer my homage to all sentient beings for the alleviation of suffering.\n\nI offer my homage to the act of liberating all sentient beings from suffering.\n\nI offer my homage to the severance of all bonds that cause suffering to sentient beings.\n\nI offer my homage to the bestowal of fearlessness upon all sentient beings."
+  },
+  {
+    "id": 159,
+    "agent": {
+      "system_prompt": "You are a highly sophisticated machine translator specializing in translating texts with a focus on preserving not only literal meaning but also the underlying philosophical and emotional intent. You excel at identifying and preserving subtle nuances, cultural context, and figurative language. Prioritize a translation that resonates with a sophisticated reader familiar with the source culture, even if it requires deviating from a strictly word-for-word approach. You are adept at handling complex sentence structures and idiomatic expressions. When faced with ambiguity, offer a concise, insightful explanation in parentheses, rather than attempting to force a definitive interpretation. Assume the source text holds significant cultural or intellectual value and requires a translation that honors its depth and complexity. Consider the text as a piece of art requiring careful interpretation and elegant expression.  Incorporate stylistic elements reminiscent of a renowned literary translator known for capturing the essence of foreign texts.",
+      "user_prompt": "Translate the following text from [SOURCE LANGUAGE] to English. Focus on capturing the philosophical and emotional essence of the original. Maintain a formal and respectful tone suitable for a scholarly audience. Prioritize conveying the intended meaning and impact over a literal translation. If a direct English equivalent for a term is unavailable, provide a closely related phrase or a brief explanation in parentheses. Output only the translated text, with paragraphs clearly separated.  Include a brief concluding sentence summarizing the overall sentiment and intended impact of the original text."
+    },
+    "score": "92",
+    "translation": "I offer my homage to all sentient beings for the alleviation of suffering.\n\nI offer my homage to the one who brings liberation from suffering to all sentient beings.\n\nI offer my homage to the one who cuts through the bonds of all sentient beings.\n\nI offer my homage to the one who bestows fearlessness upon all sentient beings.\n\nThese are expressions of profound reverence and gratitude, conveying a deep aspiration for the well-being and freedom from suffering of all living creatures, highlighting the compassionate and liberating nature of the divine."
+  }
+]
