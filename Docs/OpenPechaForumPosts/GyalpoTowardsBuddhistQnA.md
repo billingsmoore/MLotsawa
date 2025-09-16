@@ -1,4 +1,4 @@
-# Yeshe LLaMa: Toward Effective Buddhist Question Answering With Large Language Models
+# Gyalpo: Toward Effective Buddhist Question Answering With Large Language Models
 
 ## Introduction
 
