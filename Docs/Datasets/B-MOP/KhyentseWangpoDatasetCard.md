@@ -1,118 +1,65 @@
----
-license: cc-by-4.0
----
+# Dataset Card for KhyentseWangpo
 
-# Dataset Card for Dataset Name
-
-<!-- Provide a quick summary of the dataset. -->
-
-This dataset card aims to be a base template for new datasets. It has been generated using [this raw template](https://github.com/huggingface/huggingface_hub/blob/main/src/huggingface_hub/templates/datasetcard_template.md?plain=1).
+A line-to-text dataset for Tibetan OCR.
 
 ## Dataset Details
 
 ### Dataset Description
 
-<!-- Provide a longer summary of what this dataset is. -->
+This dataset consists of 13,527 rows with three columns: 
 
+- `id` (string): Unique identifier for each line
+- `image` (image): Image file containing a line of Tibetan text
+- `transcription` (string): Tibetan text transcription in Unicode format
 
+The dataset was created as part of the [BDRC](www.bdrc.io) - [MonlamAI](monlam.ai) OCR Project (B-MOP).
 
 - **Curated by:** Buddhist Digital Resource Center & Monlam AI
-- **Funded by [optional]:** [More Information Needed]
-- **Shared by:** Buddhist Digital Resource Center
 - **Language:** Tibetan
-- **License:** [More Information Needed]
+- **License:** Open Data Commons Attribution License (ODC-By) v1.0
 
 ## Uses
 
-<!-- Address questions around how the dataset is intended to be used. -->
-
 ### Direct Use
 
-<!-- This section describes suitable use cases for the dataset. -->
+This dataset is intended for:
+- Training and evaluating Tibetan Optical Character Recogntion (OCR) models
+- Fine-tuning existing OCR systems for classical Tibetan texts
+- Benchmarking line-level text recognition performance on Tibetan scripts
+- Research on historical Tibetan document digitization
 
-[More Information Needed]
+The dataset is particularly suited for models working with modern printed Tibetan text.
 
 ### Out-of-Scope Use
 
-<!-- This section addresses misuse, malicious use, and uses that the dataset will not work well for. -->
+This dataset may not be suitable for:
+- Handwritten Tibetan text recognition (as it contains modern printed text)
+- Ancient manuscript OCR (different printing styles and conditions)
+- General-purpose Tibetan language modeling without OCR context
 
-[More Information Needed]
-
-## Dataset Structure
-
-<!-- This section provides a description of the dataset fields, and additional information about the dataset structure such as criteria used to create the splits, relationships between data points, etc. -->
-
-[More Information Needed]
 
 ## Dataset Creation
 
 ### Curation Rationale
 
-<!-- Motivation for the creation of this dataset. -->
-
-[More Information Needed]
+This dataset was created to support the development of accurate OCR systems for Tibetan texts, particularly for digitizing the corpus of Tibetan Buddhist literature. The Collected Works of Jamyang Khyentse Wangpo (1820-1892), a prominent Tibetan Buddhist teacher and scholar, represents an important corpus of Tibetan religious and philosophical literature. Digitizing such works makes them more accessible to scholars, practitioners, and researchers worldwide.
 
 ### Source Data
 
-<!-- This section describes the source data (e.g. news text and headlines, social media posts, translated sentences, ...). -->
+The source material consists of [a modern print edition of the Collected Works (Sungbum) of Jamyang Khyentse Wangpo](http://purl.bdrc.io/resource/MW3PD1002). The data collection process involved:
 
-#### Data Collection and Processing
+1. **PDF Extraction**: Text was extracted from PDFs using the code found here: https://github.com/buda-base/py-tiblegenc
+2. **Alignment**: The extracted text was aligned with BDRC scans of the same publication to ensure accuracy
+3. **Line Segmentation**: The text was segmented into individual lines (13,524 total) for line-level OCR training
+4. **Image-Text Pairing**: Each line of text was paired with its corresponding image segment
 
-<!-- This section describes the data collection and processing process such as data selection criteria, filtering and normalization methods, tools and libraries used, etc. -->
 
-[More Information Needed]
+### Personal and Sensitive Information
 
-#### Who are the source data producers?
-
-<!-- This section describes the people or systems who originally created the data. It should also include self-reported demographic or identity information for the source data creators if this information is available. -->
-
-[More Information Needed]
-
-### Annotations [optional]
-
-<!-- If the dataset contains annotations which are not part of the initial data collection, use this section to describe them. -->
-
-#### Annotation process
-
-<!-- This section describes the annotation process such as annotation tools used in the process, the amount of data annotated, annotation guidelines provided to the annotators, interannotator statistics, annotation validation, etc. -->
-
-[More Information Needed]
-
-#### Who are the annotators?
-
-<!-- This section describes the people or systems who created the annotations. -->
-
-[More Information Needed]
-
-#### Personal and Sensitive Information
-
-<!-- State whether the dataset contains data that might be considered personal, sensitive, or private (e.g., data that reveals addresses, uniquely identifiable names or aliases, racial or ethnic origins, sexual orientations, religious beliefs, political opinions, financial or health data, etc.). If efforts were made to anonymize the data, describe the anonymization process. -->
-
-[More Information Needed]
-
-## Bias, Risks, and Limitations
-
-<!-- This section is meant to convey both technical and sociotechnical limitations. -->
-
-[More Information Needed]
-
-### Recommendations
-
-<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
-
-Users should be made aware of the risks, biases and limitations of the dataset. More information needed for further recommendations.
-
-## Glossary [optional]
-
-<!-- If relevant, include terms and calculations in this section that can help readers understand the dataset or dataset card. -->
-
-[More Information Needed]
-
-## More Information [optional]
-
-[More Information Needed]
+This dataset contains no personal or sensitive information.
 
 ## Dataset Card Author
 
 Jacob Moore (@billingsmoore)
+
 billingsmoore [at] gmail [dot] com
