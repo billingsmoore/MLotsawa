@@ -1,0 +1,6 @@
+400k training pairs 40k test pairs 3 epochs
+Model,                            Bleu,     Chrf,       Ter
+No Custom Tokenizer No Pretrain,  0.229500,	7.190300,	95.246000
+Getok No Pretrain,               1.055500,	9.158900,	99.267500 
+No Custom Tokenizer,              0.832200,	11.891800,	92.702500
+Pretrain Getok,                  1.142000,	9.525800,	98.692300  
