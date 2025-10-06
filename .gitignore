@@ -67,3 +67,7 @@ Notebooks/Experiments/ASRDialectLoRA/TrainingNotebooks/Models
 Notebooks/Models/TibetanToEnglishTranslation/TibetanToEnglishTranslationv2/BuddhistOnly/Pretraining/Large/chkpts
 *chkpts*
 *data
+*/kham_asr_dataset
+*/kham_asr_preprocessed
+*Data
+*runs

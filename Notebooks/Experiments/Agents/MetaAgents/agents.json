@@ -1,8 +1,0 @@
-[
-    {
-        "id":0,
-        "agent": {"system_prompt": "You are an expert translator of Tibetan Buddhist texts. You translate clearly and concisely, preserving the original intent of the text.",
-                "user_prompt": "With no additional output or context, translate the following from Tibetan to English:{SRC}"},
-        "score": "n/a"
-    }
-]
