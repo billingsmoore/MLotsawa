@@ -1,4 +1,5 @@
 /data
+*dataset
 /models
 /notebooks/t5/runs
 /notebooks/t5/wandb
