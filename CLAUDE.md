@@ -63,6 +63,12 @@ focus of this repo, so it now lives in its own repo: `~/Desktop/exploratory-tibe
 to-this-repo `asr-benchmarks` repo (private) holding a formal paper-scale ASR architecture benchmark —
 `exploratory-tibetan-asr` is earlier/broader exploratory work, not that study.
 
+`Notebooks/Models/BertTag/` (BERT multi-label classifiers tagging translations by subject domain —
+Buddhist/non-Buddhist and finer topic/genre schemes — for retrieval-augmented translation) has also
+been removed. Despite the name, this tags the *English* side of translation pairs, not Tibetan
+text — it's domain-tagging infrastructure, not Tibetan-language modeling, so it now lives in its own
+repo: `~/Desktop/buddhist-domain-tagging` (https://github.com/billingsmoore/buddhist-domain-tagging).
+
 ## Repo layout
 
 - `Notebooks/` — model training/experiment work, organized as `Models/<task>/<model>/...ipynb` and
