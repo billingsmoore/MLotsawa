@@ -48,6 +48,12 @@ from model training and translation-product code:
   Resulting datasets are published to the Hugging Face Hub and consumed from there by the model
   training notebooks that remain in this repo.
 
+`Notebooks/Models/EmbeddingModel/` and `Docs/Models/MiniLM-BO.md` (training and clustering notebooks
+for `billingsmoore/minilm-bo`, a Tibetan sentence-embedding model) have also been removed — this work
+was continued downstream (the model was further finetuned into a sentence-similarity model used as an
+automated translation quality metric in a separate project), so it now lives in its own repo:
+`~/Desktop/minilm-bo` (https://github.com/billingsmoore/minilm-bo).
+
 ## Repo layout
 
 - `Notebooks/` — model training/experiment work, organized as `Models/<task>/<model>/...ipynb` and
