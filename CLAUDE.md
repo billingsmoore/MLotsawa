@@ -73,6 +73,16 @@ repo: `~/Desktop/buddhist-domain-tagging` (https://github.com/billingsmoore/budd
 proof-of-concept notebooks) has also been removed — unrelated to translation, so it now lives in its
 own repo: `~/Desktop/exploratory-tibetan-tts` (https://github.com/billingsmoore/exploratory-tibetan-tts).
 
+`Docs/WIP/TibetantoEnglishTranslationV2.md` and
+`Notebooks/Models/Translation/TibetanToEnglishTranslation/TibetanToEnglishTranslationv2/` (the
+`mlotsawa-ground-small`/`-base` training, ablation, and evaluation notebooks) have also been removed —
+this is the code behind the preprint *"Optimizing T5 for Lightweight Tibetan-English Translation"*
+(https://doi.org/10.21203/rs.3.rs-7409829/v1), so it now lives in its own repo:
+`~/Desktop/optimizing-t5-tibetan-english-mt`
+(https://github.com/billingsmoore/optimizing-t5-tibetan-english-mt). That repo also holds copies of
+the domain-curation notebooks (originals in `tibetan-translation-datasets`) used to build the paper's
+Buddhist-only training corpus, so the paper's full pipeline is reproducible from one place.
+
 ## Repo layout
 
 - `Notebooks/` — model training/experiment work, organized as `Models/<task>/<model>/...ipynb` and
