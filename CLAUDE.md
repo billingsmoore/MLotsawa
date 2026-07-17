@@ -19,6 +19,12 @@ widget) have all been removed from this repo. They still exist in git history if
 reference, but there is currently no shipped end-user product in this repo — treat any surviving
 references to them (docs, old commits) as historical.
 
+**Also removed**: `EvalStudy/` (the human evaluation study — eval data, docx packets, and the
+notebooks that generated them) has been removed. It was superseded by the actively developed
+`human-eval-data-study` project in the separate KVP repo, which carried this same original data
+forward (kept under `original-data-prep/` there) and continued the analysis with its own docs,
+scripts, and figures.
+
 ## Repo layout
 
 - `Notebooks/` — all model/dataset development work, organized as `Datasets/<source>/...ipynb` and
@@ -27,9 +33,6 @@ references to them (docs, old commits) as historical.
 - `Docs/` — written docs: `Datasets/`, `Models/`, `Experiments/` (formal write-ups mirroring
   Notebooks), `OpenPechaForumPosts/` (published research posts on data cleaning, topic modeling,
   knowledge graphs), `WIP/` (in-progress notes), plus `GarchenReport.{md,pdf}`.
-- `EvalStudy/` — a human evaluation study: `Code/` (notebooks to build eval docx packets from data),
-  `Data/` (csv/ods rating data), `84000/` and `KVP/` (generated `.docx` evaluation packets,
-  reference and reference-free variants).
 - `.venv/` — a local virtualenv; not part of the project, ignore/do not edit.
 
 ## Commands
