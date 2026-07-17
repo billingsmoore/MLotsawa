@@ -30,24 +30,34 @@ Rinpoche-specific STT finetuning results, out of scope for this Tibetan→Englis
 have also been removed — that work belongs to, and is already more fully documented in, the separate
 Garchen repo (`R&D/ASR/Tibetan/Experiments/GeneralMaterialExperiment10-13/`).
 
-`Notebooks/Datasets/B-MOP/` and `Docs/Datasets/B-MOP/` (BDRC-curated Tibetan OCR dataset-building
-notebooks and dataset cards — Betsug, Drutsa, KhyentseWangpo, LhasaKanjur, Google Books — pushed to
-`openpecha/`/`BDRC/` on the Hugging Face Hub) have also been removed. This is OCR dataset curation
-work, not translation, so it now lives in its own repo: `~/Desktop/bdrc-ocr-datasets`
-(https://github.com/billingsmoore/bdrc-ocr-datasets).
-
 `Docs/OpenPechaForumPosts/` (published research write-ups on data cleaning, topic modeling, and
 knowledge graphs) has also been removed — it's a body of published writing, not translation-project
 code, and now lives in its own repo: `~/Desktop/openpecha-forum-posts`
 (https://github.com/billingsmoore/openpecha-forum-posts).
 
+**All dataset creation/curation/formatting work has been split out**, since it's a distinct concern
+from model training and translation-product code:
+- `Notebooks/Datasets/B-MOP/` and `Docs/Datasets/B-MOP/` (BDRC-curated Tibetan OCR dataset-building
+  notebooks and dataset cards — Betsug, Drutsa, KhyentseWangpo, LhasaKanjur, Google Books — pushed to
+  `openpecha/`/`BDRC/` on the Hugging Face Hub) now live in `~/Desktop/bdrc-ocr-datasets`
+  (https://github.com/billingsmoore/bdrc-ocr-datasets).
+- The rest of `Notebooks/Datasets/` and `Docs/Datasets/` (84000, Aggregated, GNOME, Hopkins,
+  LotsawaHouse, MadLad, Montano, NLLB, OpenPecha, stt-w-mt, Tatoeba, TED2020 — the translation-pair
+  dataset creation/cleaning/formatting notebooks and the `AggregatedData.md` write-up) now live in
+  `~/Desktop/tibetan-translation-datasets` (https://github.com/billingsmoore/tibetan-translation-datasets).
+  Resulting datasets are published to the Hugging Face Hub and consumed from there by the model
+  training notebooks that remain in this repo.
+
 ## Repo layout
 
-- `Notebooks/` — all model/dataset development work, organized as `Datasets/<source>/...ipynb` and
-  `Models/<task>/<model>/...ipynb`. `ExploratoryExperiments/` holds one-off/abandoned experiments,
+- `Notebooks/` — model training/experiment work, organized as `Models/<task>/<model>/...ipynb` and
+  `Experiments/<topic>/...ipynb`. `ExploratoryExperiments/` holds one-off/abandoned experiments,
   separate from `Experiments/` (the more formal ablation work) and `Models/` (final training runs).
-- `Docs/` — written docs: `Datasets/`, `Models/`, `Experiments/` (formal write-ups mirroring
-  Notebooks), `WIP/` (in-progress notes).
+  Dataset creation notebooks now live in the separate `tibetan-translation-datasets`/
+  `bdrc-ocr-datasets` repos (see above) — model notebooks here consume the resulting datasets from
+  the Hugging Face Hub rather than building them locally.
+- `Docs/` — written docs: `Models/`, `Experiments/` (formal write-ups mirroring Notebooks), `WIP/`
+  (in-progress notes).
 - `.venv/` — a local virtualenv; not part of the project, ignore/do not edit.
 
 ## Commands
