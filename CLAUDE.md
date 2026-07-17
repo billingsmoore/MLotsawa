@@ -54,6 +54,15 @@ was continued downstream (the model was further finetuned into a sentence-simila
 automated translation quality metric in a separate project), so it now lives in its own repo:
 `~/Desktop/minilm-bo` (https://github.com/billingsmoore/minilm-bo).
 
+**All ASR (speech recognition) exploratory work has been removed**: `Notebooks/ExploratoryExperiments/ASR/`
+(`ASRDialectLoRA/`, `ASRProofOfConcept/`, `Pretraining/`, `XLSR/`), `Notebooks/Experiments/ASR/KenLM/`,
+and `Docs/WIP/ASRDialectLoRA.md` — Whisper proof-of-concept, dialect LoRA adaptation, wav2vec2
+pretraining, and KenLM decoding language models. This is unrelated to the Tibetan→English translation
+focus of this repo, so it now lives in its own repo: `~/Desktop/exploratory-tibetan-asr`
+(https://github.com/billingsmoore/exploratory-tibetan-asr). Note there is also a separate, unrelated-
+to-this-repo `asr-benchmarks` repo (private) holding a formal paper-scale ASR architecture benchmark —
+`exploratory-tibetan-asr` is earlier/broader exploratory work, not that study.
+
 ## Repo layout
 
 - `Notebooks/` — model training/experiment work, organized as `Models/<task>/<model>/...ipynb` and
