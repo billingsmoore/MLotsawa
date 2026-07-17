@@ -30,6 +30,11 @@ Rinpoche-specific STT finetuning results, out of scope for this Tibetan→Englis
 have also been removed — that work belongs to, and is already more fully documented in, the separate
 Garchen repo (`R&D/ASR/Tibetan/Experiments/GeneralMaterialExperiment10-13/`).
 
+`Notebooks/Datasets/B-MOP/` and `Docs/Datasets/B-MOP/` (BDRC-curated Tibetan OCR dataset-building
+notebooks and dataset cards — Betsug, Drutsa, KhyentseWangpo, LhasaKanjur, Google Books — pushed to
+`openpecha/`/`BDRC/` on the Hugging Face Hub) have also been removed. This is OCR dataset curation
+work, not translation, so it now lives in its own repo: `~/Desktop/bdrc-ocr-datasets`.
+
 ## Repo layout
 
 - `Notebooks/` — all model/dataset development work, organized as `Datasets/<source>/...ipynb` and
