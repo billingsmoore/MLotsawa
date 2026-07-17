@@ -69,6 +69,10 @@ been removed. Despite the name, this tags the *English* side of translation pair
 text — it's domain-tagging infrastructure, not Tibetan-language modeling, so it now lives in its own
 repo: `~/Desktop/buddhist-domain-tagging` (https://github.com/billingsmoore/buddhist-domain-tagging).
 
+`Notebooks/ExploratoryExperiments/TTS-POC/` (early SpeechT5-based Tibetan text-to-speech
+proof-of-concept notebooks) has also been removed — unrelated to translation, so it now lives in its
+own repo: `~/Desktop/exploratory-tibetan-tts` (https://github.com/billingsmoore/exploratory-tibetan-tts).
+
 ## Repo layout
 
 - `Notebooks/` — model training/experiment work, organized as `Models/<task>/<model>/...ipynb` and
