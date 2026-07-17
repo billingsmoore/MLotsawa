@@ -16,7 +16,7 @@ Documentation on the process of training and testing models can be found in [Doc
 
 All models and datasets created and used by this project can be found on [Hugging Face](https://huggingface.co/billingsmoore)
 
-If you are interested in the research aspect of this project, I suggest reading [Validating Retrieval Augmented Translation With T5](Docs/OpenPechaForumPosts/Experiments/ValidatingRetrievalAugmentedTranslationWithT5.md) or [Knowledge Graphs for Accessible Machine Generated Translations and Commentaries](Docs/OpenPechaForumPosts/KnowledgeGraphs/KnowledgeGraphsforAccessibleMachineGeneratedTranslationsandCommentaries.md)
+If you are interested in the research aspect of this project, I suggest reading [Validating Retrieval Augmented Translation With T5](Docs/Experiments/ValidatingRetrievalAugmentedTranslationWithT5.md) or [Knowledge Graphs for Accessible Machine Generated Translations and Commentaries](https://github.com/billingsmoore/openpecha-forum-posts/blob/main/KnowledgeGraphs/KnowledgeGraphsforAccessibleMachineGeneratedTranslationsandCommentaries.md)
 
 ## Getting Started
 

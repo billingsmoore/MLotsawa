@@ -33,7 +33,13 @@ Garchen repo (`R&D/ASR/Tibetan/Experiments/GeneralMaterialExperiment10-13/`).
 `Notebooks/Datasets/B-MOP/` and `Docs/Datasets/B-MOP/` (BDRC-curated Tibetan OCR dataset-building
 notebooks and dataset cards — Betsug, Drutsa, KhyentseWangpo, LhasaKanjur, Google Books — pushed to
 `openpecha/`/`BDRC/` on the Hugging Face Hub) have also been removed. This is OCR dataset curation
-work, not translation, so it now lives in its own repo: `~/Desktop/bdrc-ocr-datasets`.
+work, not translation, so it now lives in its own repo: `~/Desktop/bdrc-ocr-datasets`
+(https://github.com/billingsmoore/bdrc-ocr-datasets).
+
+`Docs/OpenPechaForumPosts/` (published research write-ups on data cleaning, topic modeling, and
+knowledge graphs) has also been removed — it's a body of published writing, not translation-project
+code, and now lives in its own repo: `~/Desktop/openpecha-forum-posts`
+(https://github.com/billingsmoore/openpecha-forum-posts).
 
 ## Repo layout
 
@@ -41,8 +47,7 @@ work, not translation, so it now lives in its own repo: `~/Desktop/bdrc-ocr-data
   `Models/<task>/<model>/...ipynb`. `ExploratoryExperiments/` holds one-off/abandoned experiments,
   separate from `Experiments/` (the more formal ablation work) and `Models/` (final training runs).
 - `Docs/` — written docs: `Datasets/`, `Models/`, `Experiments/` (formal write-ups mirroring
-  Notebooks), `OpenPechaForumPosts/` (published research posts on data cleaning, topic modeling,
-  knowledge graphs), `WIP/` (in-progress notes).
+  Notebooks), `WIP/` (in-progress notes).
 - `.venv/` — a local virtualenv; not part of the project, ignore/do not edit.
 
 ## Commands
