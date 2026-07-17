@@ -1,0 +1,14 @@
+baseline
+Character Error Rate (CER): 0.1927006092550362
+Syllable Error Rate (SER): 0.4417088397177792
+Word Error Rate (WER): 0.3800671717566195
+
+kham
+Character Error Rate (CER): 0.29270965828251394
+Syllable Error Rate (SER): 0.5832071220124857
+Word Error Rate (WER): 0.5778137936421152
+
+lhasa
+Character Error Rate (CER): 0.29316734677785006
+Syllable Error Rate (SER): 0.5647187026707546
+Word Error Rate (WER): 0.5978872139342342
