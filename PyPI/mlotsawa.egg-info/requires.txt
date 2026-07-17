@@ -1,6 +1,0 @@
-flask
-transformers
-threading
-torch
-waitress
-webbrowser

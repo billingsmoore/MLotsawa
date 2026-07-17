@@ -20,16 +20,7 @@ If you are interested in the research aspect of this project, I suggest reading 
 
 ## Getting Started
 
-Currently, the suggested way of using this project is through the PyPI module, [mlotsawa](https://pypi.org/project/mlotsawa/). Instructions can be found at that link.
-
-If you are not comfortable working with Python modules, a demo version can be downloaded to run as a desktop app. Be aware that this version is substantially behind the PyPI module. You can try the demo on your own computer by downloading it from the link below. 
-
-The demo currently expects input that has been transliterated into THL Simplified Phonetic Transliteration. It will accept input from unicode Tibetan Script or Wylie transliteration but, for now, performance is substantially worse. Right now, it also, in general, performs better on full lines or sentences than on single words.
+The previous PyPI module and WordPress/React integrations have been deprecated and removed from this
+repository. Getting-started instructions will be updated here once a replacement path is available.
 
 If you have any trouble getting started please don't hesitate to contact me for help or to set up time for a one-on-one demo.
-
-### Downloads
-
-[You can download a version for Windows here.](https://drive.google.com/uc?export=download&id=1FTimh3FVE5JyvVnhWmglayiGMi3ohXHC)
-
-[You can download a version for Linux here.](https://drive.google.com/uc?export=download&id=1qQlt5NN77WX0ox_Wgp9iBuTyC4tdFM7v)
