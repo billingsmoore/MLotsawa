@@ -1,0 +1,1 @@
+This could be extended to other continuous script languages: Thai, Burmese, Khmer
