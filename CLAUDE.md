@@ -25,6 +25,11 @@ notebooks that generated them) has been removed. It was superseded by the active
 forward (kept under `original-data-prep/` there) and continued the analysis with its own docs,
 scripts, and figures.
 
+`Docs/GarchenReport.{md,pdf}`, `Docs/res.png`, and `Notebooks/Experiments/ASR/XLSR/garchen/` (Garchen
+Rinpoche-specific STT finetuning results, out of scope for this Tibetan→English translation project)
+have also been removed — that work belongs to, and is already more fully documented in, the separate
+Garchen repo (`R&D/ASR/Tibetan/Experiments/GeneralMaterialExperiment10-13/`).
+
 ## Repo layout
 
 - `Notebooks/` — all model/dataset development work, organized as `Datasets/<source>/...ipynb` and
@@ -32,7 +37,7 @@ scripts, and figures.
   separate from `Experiments/` (the more formal ablation work) and `Models/` (final training runs).
 - `Docs/` — written docs: `Datasets/`, `Models/`, `Experiments/` (formal write-ups mirroring
   Notebooks), `OpenPechaForumPosts/` (published research posts on data cleaning, topic modeling,
-  knowledge graphs), `WIP/` (in-progress notes), plus `GarchenReport.{md,pdf}`.
+  knowledge graphs), `WIP/` (in-progress notes).
 - `.venv/` — a local virtualenv; not part of the project, ignore/do not edit.
 
 ## Commands
